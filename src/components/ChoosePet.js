@@ -27,9 +27,7 @@ const FONT_SIZE=(width > 500) ? 60 : 30;
 const Pet = (props) => {
    return (
       <View style={styles.box}>
-         <MyBox 
-            //onPress={() => props.navigation.navigate('NamePet') } 
-         >
+         <MyBox onPress={() => props.navigation.navigate('NamePet', {...props})}>
             <Image source={props.source} style={styles.img} />
          </MyBox>
          <Text style={styles.text}>{props.name}</Text>
@@ -69,30 +67,30 @@ const ChoosePet = (props) => {
                {/* Row 1 */}
                <View style={styles.row}>
                   <View style={styles.col}>
-                     <Pet source={dog} name="Dog"/> 
+                     <Pet source={dog} name="Dog" {...props}/> 
                   </View>
                   <View style={styles.col}>
-                     <Pet source={cat} name="Cat"/> 
+                     <Pet source={cat} name="Cat" {...props}/> 
                   </View>
                </View>
 
                {/* Row 2 */}
                <View style={styles.row}>
                   <View style={styles.col}>
-                     <Pet source={rabbit} name="Rabbit"/> 
+                     <Pet source={rabbit} name="Rabbit" {...props}/> 
                   </View>
                   <View style={styles.col}>
-                     <Pet source={turtle} name="Turtle"/> 
+                     <Pet source={turtle} name="Turtle" {...props}/> 
                   </View>
                </View>
 
                {/* Row 3 */}
                <View style={styles.row}>
                   <View style={styles.col}>
-                     <Pet source={parrot} name="Parrot"/> 
+                     <Pet source={parrot} name="Parrot" {...props}/> 
                   </View>
                   <View style={styles.col}>
-                     <Pet source={hamster} name="Hamster"/> 
+                     <Pet source={hamster} name="Hamster" {...props}/> 
                   </View>
                </View>
 

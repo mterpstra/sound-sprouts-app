@@ -7,6 +7,7 @@ import Layout from "./src/components/Layout"
 import Home from "./src/components/Home"
 import HelloFromDede from "./src/components/HelloFromDede"
 import ChoosePet from "./src/components/ChoosePet"
+import NamePet from "./src/components/NamePet"
 
 
 const Stack = createNativeStackNavigator();
@@ -36,6 +37,9 @@ const App = () => {
 
             <Stack.Screen name="ChoosePet" 
                component={ChoosePet} />
+
+            <Stack.Screen name="NamePet" 
+               component={NamePet} />
 
          </Stack.Navigator>
       </NavigationContainer>
