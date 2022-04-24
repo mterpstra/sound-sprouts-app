@@ -13,8 +13,8 @@ const turtle = require('../../images/turtle.png');
 const parrot = require('../../images/parrot.png');
 const hamster = require('../../images/hamster.png');
 const message = [
-   "We have lots of nice pets to choose from here at the pet shop!",
-   "Pick one and get started." 
+   "We have lots of nice pets to choose from!",
+   "Pick one and lets get started." 
 ];
 
 const width = Dimensions.get('window').width;
