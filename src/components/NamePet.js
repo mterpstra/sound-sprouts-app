@@ -30,7 +30,14 @@ const NamePet = (props) => {
                   width:"80%",
                }}>
                   <MyBox radius={15}>
-                     <Text>Hello World</Text>
+                     <View style={{
+                        flex:1,
+                        flexDirection:"column",
+                        justifyContent:"center",
+                        alignItems:"center",
+                     }}>
+                        <Text style={{ color:"white",fontWeight:"bold" }}>Next</Text>
+                     </View>
                   </MyBox>
                </View>
 
