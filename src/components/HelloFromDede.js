@@ -39,7 +39,6 @@ function HelloFromDede(props) {
                style={styles.full}
                imageStyle={{
                   resizeMode: 'contain',
-                  //resizeMode: 'cover',
                }}
 
             >

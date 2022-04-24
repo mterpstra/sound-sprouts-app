@@ -1,10 +1,9 @@
 import React from "react"; 
-import { Text, View, Image, ImageBackground, StyleSheet, Platform, Dimensions } from 'react-native';
-import SpeechBubble from "./SpeechBubble"
-import { TopWithDede, Top, Bottom } from "./Layout"
-import { COLORS } from '../values/colors.js';
-import MyBox from "./Box"
+import { Text, View, Image, StyleSheet, Dimensions } from 'react-native';
 import { useFonts } from 'expo-font';
+import { BluredLayout } from "./Layout"
+import MyBox from "./Box"
+import { COLORS } from '../values/colors.js';
 
 const petshop = require('../../images/background.png');
 const dog = require('../../images/dog.png');
@@ -18,17 +17,28 @@ const message = [
    "Pick one and get started." 
 ];
 
-const BLUR_RADIUS = Platform.OS == 'ios' ? 20 : 4;
-
 const width = Dimensions.get('window').width;
 const FONT_SIZE=(width > 500) ? 60 : 30;
-
 
 const Pet = (props) => {
    return (
       <View style={styles.box}>
-         <MyBox onPress={() => props.navigation.navigate('NamePet', {...props})}>
-            <Image source={props.source} style={styles.img} />
+         <MyBox 
+            onPress={() => props.navigation.navigate('NamePet', {
+               source:props.source,
+               name:props.name,
+            })}>
+
+            <View style={{
+               flex:1,
+               flexDirection:"row",
+               justifyContent:"center",
+               alignItems:"stretch",
+            }}>
+
+               <Image source={props.source} style={styles.img} />
+            </View>
+
          </MyBox>
          <Text style={styles.text}>{props.name}</Text>
       </View>
@@ -45,58 +55,38 @@ const ChoosePet = (props) => {
       return <View/>;
    }
 
-
    return (
-      <ImageBackground 
-         source={petshop} 
-         resizeMode="cover" 
-         blurRadius={BLUR_RADIUS}
-         style={{
-            flex:1,
-         }}>
-
-         <View style={{
-            flex:1,
-            backgroundColor: "rgba(0, 0, 0, .4)",
-         }}>
-
-            <TopWithDede message={message} />
-
-            <Bottom>
-
-               {/* Row 1 */}
-               <View style={styles.row}>
-                  <View style={styles.col}>
-                     <Pet source={dog} name="Dog" {...props}/> 
-                  </View>
-                  <View style={styles.col}>
-                     <Pet source={cat} name="Cat" {...props}/> 
-                  </View>
-               </View>
-
-               {/* Row 2 */}
-               <View style={styles.row}>
-                  <View style={styles.col}>
-                     <Pet source={rabbit} name="Rabbit" {...props}/> 
-                  </View>
-                  <View style={styles.col}>
-                     <Pet source={turtle} name="Turtle" {...props}/> 
-                  </View>
-               </View>
-
-               {/* Row 3 */}
-               <View style={styles.row}>
-                  <View style={styles.col}>
-                     <Pet source={parrot} name="Parrot" {...props}/> 
-                  </View>
-                  <View style={styles.col}>
-                     <Pet source={hamster} name="Hamster" {...props}/> 
-                  </View>
-               </View>
-
-            </Bottom>
+      <BluredLayout message={message}>
+         {/* Row 1 */}
+         <View style={styles.row}>
+            <View style={styles.col}>
+               <Pet source={dog} name="Dog" {...props}/> 
+            </View>
+            <View style={styles.col}>
+               <Pet source={cat} name="Cat" {...props}/> 
+            </View>
          </View>
-      </ImageBackground>
+
+         {/* Row 2 */}
+         <View style={styles.row}>
+            <View style={styles.col}>
+               <Pet source={rabbit} name="Rabbit" {...props}/> 
+            </View>
+            <View style={styles.col}>
+               <Pet source={turtle} name="Turtle" {...props}/> 
+            </View>
+         </View>
+
+         {/* Row 3 */}
+         <View style={styles.row}>
+            <View style={styles.col}>
+               <Pet source={parrot} name="Parrot" {...props}/> 
+            </View>
+            <View style={styles.col}>
+               <Pet source={hamster} name="Hamster" {...props}/> 
+            </View>
+         </View>
+      </BluredLayout>
    );
 }
 

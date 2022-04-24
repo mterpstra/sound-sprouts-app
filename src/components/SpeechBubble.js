@@ -6,7 +6,7 @@ import {
    StyleSheet, 
 } from 'react-native';
 
-const speed=100;
+const speed=0;
 
 class SpeechBubble extends Component {
 

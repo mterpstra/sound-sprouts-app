@@ -1,81 +1,57 @@
 import React from "react"; 
-import { Text, View, Image, ImageBackground, TextInput, StyleSheet, Platform, Dimensions } from 'react-native';
-import SpeechBubble from "./SpeechBubble"
-import { TopWithDede, Top, Bottom } from "./Layout"
-import { COLORS } from '../values/colors.js';
-import MyBox from "./Box"
+import { Text, View, Image, TextInput, StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
-
-const petshop = require('../../images/background.png');
-const dog = require('../../images/dog.png');
-const cat = require('../../images/cat.png');
-const rabbit = require('../../images/rabbit.png');
-const turtle = require('../../images/turtle.png');
-const parrot = require('../../images/parrot.png');
-const hamster = require('../../images/hamster.png');
-
-const BLUR_RADIUS = Platform.OS == 'ios' ? 20 : 4;
-
-const width = Dimensions.get('window').width;
-const FONT_SIZE=(width > 500) ? 60 : 30;
-
+import { BluredLayout } from "./Layout"
+import MyBox from "./Box"
 
 const NamePet = (props) => {
-
-   let [fontsLoaded] = useFonts({
-      'Patrick-Hand': require('../../assets/fonts/PatrickHand-Regular.ttf'),
-   });
-
-   if (!fontsLoaded) {
-      return <View/>;
-   }
-
-   const message = [
-      "Name your " + props.route.params.name
-   ];
-
+   const message = "Name your " + props.route.params.name.toLowerCase();
    return (
-      <ImageBackground 
-         source={petshop} 
-         resizeMode="cover" 
-         blurRadius={BLUR_RADIUS}
-         style={{
-            flex:1,
+      <BluredLayout message={message}>
+         <View style={{ 
+            flex:1, 
          }}>
-
-         <View style={{
-            flex:1,
-            backgroundColor: "rgba(0, 0, 0, .4)",
-         }}>
-
-            <TopWithDede message={message} />
-
-            <Bottom>
+            <View style={{ 
+               flex:0.6, 
+               flexDirection:"column",
+               justifyContent:"center",
+            }}>
                <Image style={styles.img} source={props.route.params.source}/>
+            </View>
+            <View style={{ flex:0.4, 
+               flexDirection:"column",
+               justifyContent:"center",
+               alignItems:"center",
+            }}>
+               <TextInput style={styles.input} placeholder={props.route.params.name} />
 
-               <TextInput
-                  style={styles.input}
-                  placeholder={props.route.params.name}
+               <View style={{
+                  height: 60,
+                  width:"80%",
+               }}>
+                  <MyBox radius={15}>
+                     <Text>Hello World</Text>
+                  </MyBox>
+               </View>
 
-               />
-            </Bottom>
-
+            </View>
          </View>
-      </ImageBackground>
+      </BluredLayout>
    );
 }
 
 const styles = StyleSheet.create({
    input: {
+      width:"80%",
       backgroundColor:"white",
-      height: 40,
+      height: 60,
       margin: 12,
       borderWidth: 1,
       padding: 10,
       borderRadius:15,
    },
    img: {
-      flex:1,
+      flex:0.8,
       width: undefined,
       height: undefined,
       resizeMode:'contain',

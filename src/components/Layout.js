@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, Image, ImageBackground } from 'react-native';
+import { Text, View, StyleSheet, Image, ImageBackground, Platform } from 'react-native';
 import SpeechBubble from "./SpeechBubble"
 
 const petshop = require('../../images/background.png')
@@ -30,32 +30,53 @@ class Top extends Component {
    }
 }
 
-class TopWithDede extends Component {
-   render() {
-      return(
-         <Top>
+const BluredLayout = (props) => {
+   const BLUR_RADIUS = Platform.OS == 'ios' ? 20 : 4;
+   return (
+      <ImageBackground 
+         source={petshop} 
+         resizeMode="cover" 
+         blurRadius={BLUR_RADIUS}
+         style={{
+            flex:1,
+         }}>
 
-            <View style={{
-               //backgroundColor:"green",
-               flexDirection:"row",
-               height:"100%",
-            }}>
+         <View style={{
+            flex:1,
+            backgroundColor: "rgba(0, 0, 0, .4)",
+         }}>
 
-               <View style={styles.left}>
-                  <Image style={styles.head} source={head}/>
-               </View>
+            <TopWithDede message={props.message} />
+            <Bottom>
+               {props.children}
+            </Bottom>
+         </View>
+      </ImageBackground>
+   );
+}
 
-               <View style={styles.right}>
-                  <SpeechBubble
-                     message={this.props.message}
-                     arrow="left"
-                  />
-               </View>
+const TopWithDede = (props) => {
+   return(
+      <Top>
+         <View style={{
+            flexDirection:"row",
+            height:"100%",
+         }}>
 
+            <View style={styles.left}>
+               <Image style={styles.head} source={head}/>
             </View>
-         </Top>
-      )
-   }
+
+            <View style={styles.right}>
+               <SpeechBubble
+                  message={props.message}
+                  arrow="left"
+               />
+            </View>
+
+         </View>
+      </Top>
+   )
 }
 
 class Bottom extends Component {
@@ -106,4 +127,4 @@ const styles = StyleSheet.create({
    }
 });
 
-export {Layout, Bottom, Top, TopWithDede}
+export {BluredLayout, Layout, Bottom, Top, TopWithDede}

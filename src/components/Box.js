@@ -1,65 +1,34 @@
 import React, { Component, useState, useEffect } from "react";
-import { View, StyleSheet, Pressable, Dimensions } from 'react-native';
+import { View, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '../values/colors.js';
-import { useFonts } from 'expo-font';
 
-let width = Dimensions.get('window').width;
-const FONTSIZE=(width > 500) ? 80 : 35;
 
 const MyBox = (props) => {
-
-   let [fontsLoaded] = useFonts({
-      'Patrick-Hand': require('../../assets/fonts/PatrickHand-Regular.ttf'),
-   });
-
-   if (!fontsLoaded) {
-      return <View/>;
-   }
-
+   const r = props.radius ? props.radius : 30;
    return (
       <Pressable 
-         style={styles.pressable}
+         style={{flex:1}}
          onPress={props.onPress}>
          <LinearGradient
             colors={[COLORS.orange, COLORS.red]}
-            style={styles.outer}>
+            style={{
+               flex:1,
+               borderRadius:r,
+               padding:3,
+            }}>
             <LinearGradient
                colors={[COLORS.blue_light, COLORS.blue_dark]}
-               style={styles.inner}>
-               <View style={styles.center}>
-                  {props.children}
-               </View>
+               style={{
+                  flex:1,
+                  borderRadius:r,
+                  padding:5,
+               }}>
+               {props.children}
             </LinearGradient>
          </LinearGradient>
       </Pressable>
    );
 }
-
-const styles = StyleSheet.create({
-
-   pressable: {
-      flex:1,
-   },
-
-   outer: {
-      flex:1,
-      borderRadius:30,
-      padding:3,
-   },
-
-   inner: {
-      flex:1,
-      borderRadius:30,
-      padding:5,
-   },
-
-   center: {
-      flex:1,
-      flexDirection:"row",
-      justifyContent:"center",
-      alignItems:"stretch",
-   },
-});
 
 export default MyBox;
