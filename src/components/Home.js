@@ -1,5 +1,5 @@
 import React from "react"; 
-import { View, Image, ImageBackground, StyleSheet, Linking } from 'react-native';
+import { SafeAreaView, StatusBar, View, Image, ImageBackground, StyleSheet, Linking } from 'react-native';
 import HomeButton from "./Button"
 
 const logo = require('../../images/logo.png');
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
    },
 });
 
-export default Home;
+         export default Home;

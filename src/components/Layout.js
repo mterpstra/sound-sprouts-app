@@ -1,37 +1,42 @@
 import React, { Component } from "react";
 import { Text, View, StyleSheet, Image, ImageBackground, Platform } from 'react-native';
 import SpeechBubble from "./SpeechBubble"
+import { useHeaderHeight } from '@react-navigation/elements';
 
 const petshop = require('../../images/background.png')
 const head = require('../../images/head.png')
 
-class Layout extends Component {
-   render() {
-      return(
-         <View style={styles.container}>
-            <ImageBackground 
-               source={petshop} 
-               resizeMode="cover" 
-               style={styles.image}>
-               {this.props.children}
-            </ImageBackground>
-         </View>
-      )
-   }
+const Layout = (props) => {
+   const headerHeight = useHeaderHeight();
+   return(
+      <View style={styles.container}>
+         <ImageBackground 
+            source={petshop} 
+            resizeMode="cover" 
+            style={styles.image}>
+            <View style={{
+               height:headerHeight,
+               backgroundColor:"rgba(0,0,0,0.5)",
+            }}/>
+            {props.children}
+         </ImageBackground>
+      </View>
+   )
 }
 
-class Top extends Component {
-   render() {
-      return(
-         <View style={styles.top}>
-            {this.props.children}
-         </View>
-      )
-   }
+const Top = (props) => {
+   return(
+      <View style={styles.top}>
+         {props.children}
+      </View>
+   )
 }
 
 const BluredLayout = (props) => {
+
+   const headerHeight = useHeaderHeight();
    const BLUR_RADIUS = Platform.OS == 'ios' ? 20 : 4;
+
    return (
       <ImageBackground 
          source={petshop} 
@@ -40,6 +45,11 @@ const BluredLayout = (props) => {
          style={{
             flex:1,
          }}>
+
+         <View style={{
+            height:headerHeight,
+            backgroundColor:"rgba(0,0,0,0.5)",
+         }}/>
 
          <View style={{
             flex:1,
@@ -79,14 +89,12 @@ const TopWithDede = (props) => {
    )
 }
 
-class Bottom extends Component {
-   render() {
-      return(
-         <View style={styles.bottom}>
-            {this.props.children}
-         </View>
-      )
-   }
+const Bottom = (props) =>{
+   return(
+      <View style={styles.bottom}>
+         {props.children}
+      </View>
+   )
 }
 
 const styles = StyleSheet.create({

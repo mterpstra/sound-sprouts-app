@@ -9,37 +9,40 @@ import HelloFromDede from "./src/components/HelloFromDede"
 import ChoosePet from "./src/components/ChoosePet"
 import NamePet from "./src/components/NamePet"
 
-
+import { COLORS } from "./src/values/colors"
 const Stack = createNativeStackNavigator();
 
 const App = () => {
 
    const screenOptions = {
-      headerStyle: {
-         backgroundColor: '#42627c',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-         fontWeight: 'bold',
-      }
+      headerShown: true,
+      headerTransparent: true,
+      headerTintColor: COLORS.blue_dark,
    };
 
    return ( 
       <NavigationContainer>
          <Stack.Navigator screenOptions={screenOptions}>
+
             <Stack.Screen name="Home" 
                component={Home} 
-               options={{ title:"Welcome to Sound Sprouts" }} />
+               options={{ title:"" }} 
+            />
 
             <Stack.Screen name="HelloFromDede" 
                component={HelloFromDede} 
-               options={{ title:"Welcome" }} />
+               options={{ title:""}}
+            />
 
             <Stack.Screen name="ChoosePet" 
-               component={ChoosePet} />
+               component={ChoosePet} 
+               options={{ title:"" }} 
+            />
 
             <Stack.Screen name="NamePet" 
-               component={NamePet} />
+               component={NamePet} 
+               options={{ title:"" }} 
+            />
 
          </Stack.Navigator>
       </NavigationContainer>

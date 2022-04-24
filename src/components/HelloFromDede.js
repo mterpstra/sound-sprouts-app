@@ -2,6 +2,7 @@ import React, { Component, useRef } from "react";
 import { View, Image, Button, StyleSheet, Pressable, ImageBackground, Animated, Easing } from 'react-native';
 import { Layout, Top, Bottom } from "./Layout"
 import SpeechBubble from "./SpeechBubble"
+import { COLORS } from "../values/colors"
 
 const dede = require('../../images/Dede.png')
 
@@ -10,13 +11,14 @@ function HelloFromDede(props) {
    // speechComplete
    function speechComplete() {
       props.navigation.setOptions({
-         headerRight: () => ( <Button 
-            title="Next" 
-            color="#c0c0c0"
-            onPress={() => { 
-               props.navigation.navigate('ChoosePet');
-            }}
-         />
+         headerRight: () => ( 
+            <Button 
+               title="Next" 
+               color={COLORS.blue_dark}
+               onPress={() => { 
+                  props.navigation.navigate('ChoosePet');
+               }}
+            />
          )
       });
    }
