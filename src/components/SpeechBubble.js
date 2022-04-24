@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 const speed=100;
+const COLOR="#faf9d1";
 
 class SpeechBubble extends Component {
 
@@ -77,19 +78,18 @@ class SpeechBubble extends Component {
 const styles = StyleSheet.create({
 
    text: {
-      fontSize: Dimensions.get('window').width > 1000 ? 40 : 20,
+      fontSize: Dimensions.get('window').width > 1000 ? 35 : 15,
    },
 
    bubbleContainer: {
       flex:1,
       flexDirection:"column-reverse",
-      //backgroundColor:"purple",
    },
 
    textContainer: {
       padding:10,
       marginBottom:20,
-      backgroundColor:"white",
+      backgroundColor:COLOR,
       flex:0.9,
       marginRight:"auto",
       marginLeft:"auto",
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
       borderLeftWidth: 0,
 
       borderTopColor: 'transparent',
-      borderRightColor: 'white',
+      borderRightColor: COLOR,
       borderBottomColor: 'transparent',
       borderLeftColor: 'transparent',
 
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
       borderRightWidth: 10,
       borderLeftWidth: 10,
 
-      borderTopColor: 'white',
+      borderTopColor: COLOR,
       borderRightColor: 'transparent',
       borderBottomColor: 'transparent',
       borderLeftColor: 'transparent',
