@@ -5,6 +5,9 @@ import { BluredLayout } from "./Layout"
 import MyBox from "./Box"
 
 const NamePet = (props) => {
+
+   const [name, onChangeName] = React.useState("");
+
    const message = "Name your " + props.route.params.name.toLowerCase();
    return (
       <BluredLayout message={message}>
@@ -23,13 +26,19 @@ const NamePet = (props) => {
                justifyContent:"center",
                alignItems:"center",
             }}>
-               <TextInput style={styles.input} placeholder={props.route.params.name} />
+               <TextInput 
+                  style={styles.input} 
+                  placeholder={props.route.params.name} 
+                  onChangeText={onChangeName}
+               />
 
                <View style={{
                   height: 60,
                   width:"80%",
                }}>
-                  <MyBox radius={15}>
+                  <MyBox radius={15}
+                     onPress={() => { alert(name); }}
+                  >
                      <View style={{
                         flex:1,
                         flexDirection:"column",
