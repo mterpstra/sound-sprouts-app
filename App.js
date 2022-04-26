@@ -9,6 +9,8 @@ import HelloFromDede from "./src/components/HelloFromDede"
 import ChoosePet from "./src/components/ChoosePet"
 import NamePet from "./src/components/NamePet"
 
+import { CartContext } from "./src/components/CartContext"
+
 import { COLORS } from "./src/values/colors"
 const Stack = createNativeStackNavigator();
 
@@ -21,31 +23,33 @@ const App = () => {
    };
 
    return ( 
-      <NavigationContainer>
-         <Stack.Navigator screenOptions={screenOptions}>
+      <CartContext.Provider value={{}}>
+         <NavigationContainer>
+            <Stack.Navigator screenOptions={screenOptions}>
 
-            <Stack.Screen name="Home" 
-               component={Home} 
-               options={{ title:"" }} 
-            />
+               <Stack.Screen name="Home" 
+                  component={Home} 
+                  options={{ title:"" }} 
+               />
 
-            <Stack.Screen name="HelloFromDede" 
-               component={HelloFromDede} 
-               options={{ title:""}}
-            />
+               <Stack.Screen name="HelloFromDede" 
+                  component={HelloFromDede} 
+                  options={{ title:""}}
+               />
 
-            <Stack.Screen name="ChoosePet" 
-               component={ChoosePet} 
-               options={{ title:"" }} 
-            />
+               <Stack.Screen name="ChoosePet" 
+                  component={ChoosePet} 
+                  options={{ title:"" }} 
+               />
 
-            <Stack.Screen name="NamePet" 
-               component={NamePet} 
-               options={{ title:"" }} 
-            />
+               <Stack.Screen name="NamePet" 
+                  component={NamePet} 
+                  options={{ title:"" }} 
+               />
 
-         </Stack.Navigator>
-      </NavigationContainer>
+               </Stack.Navigator>
+            </NavigationContainer>
+      </CartContext.Provider>
    );
 }
 

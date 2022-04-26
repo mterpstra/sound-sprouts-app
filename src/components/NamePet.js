@@ -1,14 +1,17 @@
-import React from "react"; 
+import React, { useContext, useState }  from "react"; 
 import { Text, View, Image, TextInput, StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
 import { BluredLayout } from "./Layout"
 import MyBox from "./Box"
+import { CartContext } from "./CartContext"
 
 const NamePet = (props) => {
 
-   const [name, onChangeName] = React.useState("");
+   const [name, onChangeName] = useState("");
+   const cart = useContext(CartContext);
+   console.log("NamePet cart", cart);
 
-   const message = "Name your " + props.route.params.name.toLowerCase();
+   const message = "Name your " + cart.pet.toLowerCase();
    return (
       <BluredLayout message={message}>
          <View style={{ 
@@ -19,7 +22,7 @@ const NamePet = (props) => {
                flexDirection:"column",
                justifyContent:"center",
             }}>
-               <Image style={styles.img} source={props.route.params.source}/>
+               <Image style={styles.img} source={cart.source}/>
             </View>
             <View style={{ flex:0.4, 
                flexDirection:"column",
@@ -28,7 +31,7 @@ const NamePet = (props) => {
             }}>
                <TextInput 
                   style={styles.input} 
-                  placeholder={props.route.params.name} 
+                  placeholder="Name"
                   onChangeText={onChangeName}
                />
 
@@ -37,7 +40,10 @@ const NamePet = (props) => {
                   width:"80%",
                }}>
                   <MyBox radius={15}
-                     onPress={() => { alert(name); }}
+                     onPress={() => { 
+                        cart.name = name;
+                        console.log(cart);
+                     }}
                   >
                      <View style={{
                         flex:1,

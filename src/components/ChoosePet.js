@@ -1,9 +1,10 @@
-import React from "react"; 
+import React, { useContext } from "react"; 
 import { Text, View, Image, StyleSheet, Dimensions } from 'react-native';
 import { useFonts } from 'expo-font';
 import { BluredLayout } from "./Layout"
 import MyBox from "./Box"
 import { COLORS } from '../values/colors.js';
+import { CartContext } from "./CartContext"
 
 const petshop = require('../../images/background.png');
 const dog = require('../../images/dog.png');
@@ -12,6 +13,7 @@ const rabbit = require('../../images/rabbit.png');
 const turtle = require('../../images/turtle.png');
 const parrot = require('../../images/parrot.png');
 const hamster = require('../../images/hamster.png');
+
 const message = [
    "We have lots of nice pets to choose from!",
    "Pick one and lets get started." 
@@ -21,13 +23,20 @@ const width = Dimensions.get('window').width;
 const FONT_SIZE=(width > 500) ? 60 : 30;
 
 const Pet = (props) => {
+
+   const cart = useContext(CartContext);
+   console.log('ChoosePet cart', cart);
+
    return (
       <View style={styles.box}>
          <MyBox 
-            onPress={() => props.navigation.navigate('NamePet', {
-               source:props.source,
-               name:props.name,
-            })}>
+            onPress={() => 
+               {
+                  cart.source = props.source;
+                  cart.pet = props.pet;
+                  props.navigation.navigate('NamePet');
+               }
+            }>
 
             <View style={{
                flex:1,
@@ -60,30 +69,30 @@ const ChoosePet = (props) => {
          {/* Row 1 */}
          <View style={styles.row}>
             <View style={styles.col}>
-               <Pet source={dog} name="Dog" {...props}/> 
+               <Pet source={dog} pet="dog" {...props}/> 
             </View>
             <View style={styles.col}>
-               <Pet source={cat} name="Cat" {...props}/> 
+               <Pet source={cat} pet="cat" {...props}/> 
             </View>
          </View>
 
          {/* Row 2 */}
          <View style={styles.row}>
             <View style={styles.col}>
-               <Pet source={rabbit} name="Rabbit" {...props}/> 
+               <Pet source={rabbit} pet="rabbit" {...props}/> 
             </View>
             <View style={styles.col}>
-               <Pet source={turtle} name="Turtle" {...props}/> 
+               <Pet source={turtle} pet="turtle" {...props}/> 
             </View>
          </View>
 
          {/* Row 3 */}
          <View style={styles.row}>
             <View style={styles.col}>
-               <Pet source={parrot} name="Parrot" {...props}/> 
+               <Pet source={parrot} pet="parrot" {...props}/> 
             </View>
             <View style={styles.col}>
-               <Pet source={hamster} name="Hamster" {...props}/> 
+               <Pet source={hamster} pet="hamster" {...props}/> 
             </View>
          </View>
       </BluredLayout>
