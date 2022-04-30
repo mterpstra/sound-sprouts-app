@@ -25,7 +25,6 @@ const FONT_SIZE=(width > 500) ? 60 : 30;
 const Pet = (props) => {
 
    const cart = useContext(CartContext);
-   console.log('ChoosePet cart', cart);
 
    return (
       <View style={styles.box}>
@@ -49,7 +48,7 @@ const Pet = (props) => {
             </View>
 
          </MyBox>
-         <Text style={styles.text}>{props.name}</Text>
+         <Text style={styles.text}>{props.pet}</Text>
       </View>
    );
 }
@@ -136,6 +135,7 @@ const styles = StyleSheet.create({
       textAlign:"center",
       fontFamily: 'Patrick-Hand',
       flexWrap: 'wrap',
+      textTransform:"capitalize",
    },
 });
 
