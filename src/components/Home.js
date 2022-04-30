@@ -1,5 +1,6 @@
 import React from "react"; 
-import { SafeAreaView, StatusBar, View, Image, ImageBackground, StyleSheet, Linking } from 'react-native';
+import PropTypes from 'prop-types';
+import { Image, ImageBackground, StyleSheet, Linking } from 'react-native';
 import HomeButton from "./Button"
 
 const logo = require('../../images/logo.png');
@@ -16,7 +17,7 @@ const Home = (props) => {
          <Image style={styles.logo_image} source={logo}/>
 
          <HomeButton
-            text="Dede's Pet Shop"
+            text="Dede's Pet Shop!"
             onPress={() => {
                props.navigation.navigate('HelloFromDede');
             }}/>
@@ -31,6 +32,9 @@ const Home = (props) => {
    );
 }
 
+Home.propTypes = {
+   navigation: PropTypes.object,
+};
 
 const styles = StyleSheet.create({
    home: {
@@ -50,4 +54,4 @@ const styles = StyleSheet.create({
    },
 });
 
-         export default Home;
+export default Home;

@@ -1,11 +1,10 @@
 import React, { useContext, useState }  from "react"; 
 import { Text, View, Image, TextInput, StyleSheet } from 'react-native';
-import { useFonts } from 'expo-font';
 import { BluredLayout } from "./Layout"
 import MyBox from "./Box"
 import { CartContext } from "./CartContext"
 
-const NamePet = (props) => {
+const NamePet = () => {
 
    const [name, onChangeName] = useState("");
    const cart = useContext(CartContext);

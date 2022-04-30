@@ -1,12 +1,9 @@
-import React, { Component, useState } from "react";
-import { Dimensions, PixelRatio } from "react-native";
-import { 
-   View, 
-   Text, 
-   StyleSheet, 
-} from 'react-native';
+import React, { Component } from "react";
+import PropTypes from 'prop-types';
+import { Dimensions } from "react-native";
+import { View, Text, StyleSheet, } from 'react-native';
 
-const speed=100;
+const speed=1;
 const COLOR="#faf9d1";
 
 class SpeechBubble extends Component {
@@ -34,15 +31,23 @@ class SpeechBubble extends Component {
       this._interval = setInterval(() => {
 
          if (this.state.index < speech[this.state.line].length) {
-            this.state.msg += speech[this.state.line][this.state.index];
-            this.setState({index: this.state.index+1});
+
+            this.setState({
+               msg: this.state.msg + speech[this.state.line][this.state.index],
+               index: this.state.index+1,
+            });
+
             return;
          } 
 
          if (this.state.line < speech.length-1) {
-            this.state.line++;
-            this.state.index = 0;
-            this.state.msg = "";
+
+            this.setState({
+               line: this.state.line+1,
+               index: 0,
+               msg: "",
+            });
+
             return;
          }
 
@@ -74,6 +79,15 @@ class SpeechBubble extends Component {
       );
    }
 }
+
+SpeechBubble.propTypes = {
+   message: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+   ]),
+   arrow:PropTypes.string,
+   onComplete:PropTypes.func,
+};
 
 const styles = StyleSheet.create({
 

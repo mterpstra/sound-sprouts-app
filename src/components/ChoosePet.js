@@ -1,4 +1,5 @@
 import React, { useContext } from "react"; 
+import PropTypes from 'prop-types';
 import { Text, View, Image, StyleSheet, Dimensions } from 'react-native';
 import { useFonts } from 'expo-font';
 import { BluredLayout } from "./Layout"
@@ -6,7 +7,6 @@ import MyBox from "./Box"
 import { COLORS } from '../values/colors.js';
 import { CartContext } from "./CartContext"
 
-const petshop = require('../../images/background.png');
 const dog = require('../../images/dog.png');
 const cat = require('../../images/cat.png');
 const rabbit = require('../../images/rabbit.png');
@@ -54,6 +54,13 @@ const Pet = (props) => {
    );
 }
 
+Pet.propTypes = {
+   source: PropTypes.number,
+   pet: PropTypes.string,
+   name: PropTypes.string,
+   navigation: PropTypes.object,
+};
+
 const ChoosePet = (props) => {
 
    let [fontsLoaded] = useFonts({
@@ -66,35 +73,37 @@ const ChoosePet = (props) => {
 
    return (
       <BluredLayout message={message}>
-         {/* Row 1 */}
-         <View style={styles.row}>
-            <View style={styles.col}>
-               <Pet source={dog} pet="dog" {...props}/> 
+         <>
+            {/* Row 1 */}
+            <View style={styles.row}>
+               <View style={styles.col}>
+                  <Pet source={dog} pet="dog" {...props}/> 
+               </View>
+               <View style={styles.col}>
+                  <Pet source={cat} pet="cat" {...props}/> 
+               </View>
             </View>
-            <View style={styles.col}>
-               <Pet source={cat} pet="cat" {...props}/> 
-            </View>
-         </View>
 
-         {/* Row 2 */}
-         <View style={styles.row}>
-            <View style={styles.col}>
-               <Pet source={rabbit} pet="rabbit" {...props}/> 
+            {/* Row 2 */}
+            <View style={styles.row}>
+               <View style={styles.col}>
+                  <Pet source={rabbit} pet="rabbit" {...props}/> 
+               </View>
+               <View style={styles.col}>
+                  <Pet source={turtle} pet="turtle" {...props}/> 
+               </View>
             </View>
-            <View style={styles.col}>
-               <Pet source={turtle} pet="turtle" {...props}/> 
-            </View>
-         </View>
 
-         {/* Row 3 */}
-         <View style={styles.row}>
-            <View style={styles.col}>
-               <Pet source={parrot} pet="parrot" {...props}/> 
+            {/* Row 3 */}
+            <View style={styles.row}>
+               <View style={styles.col}>
+                  <Pet source={parrot} pet="parrot" {...props}/> 
+               </View>
+               <View style={styles.col}>
+                  <Pet source={hamster} pet="hamster" {...props}/> 
+               </View>
             </View>
-            <View style={styles.col}>
-               <Pet source={hamster} pet="hamster" {...props}/> 
-            </View>
-         </View>
+         </>
       </BluredLayout>
    );
 }

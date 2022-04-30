@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import { Text, View, StyleSheet, Image, ImageBackground, Platform } from 'react-native';
+import React from "react";
+import PropTypes from 'prop-types';
+import { View, StyleSheet, Image, ImageBackground, Platform } from 'react-native';
 import SpeechBubble from "./SpeechBubble"
 import { useHeaderHeight } from '@react-navigation/elements';
 
@@ -23,6 +24,9 @@ const Layout = (props) => {
       </View>
    )
 }
+Layout.propTypes = {
+   children: PropTypes.object,
+};
 
 const Top = (props) => {
    return(
@@ -31,6 +35,9 @@ const Top = (props) => {
       </View>
    )
 }
+Top.propTypes = {
+   children: PropTypes.object,
+};
 
 const BluredLayout = (props) => {
 
@@ -64,6 +71,16 @@ const BluredLayout = (props) => {
       </ImageBackground>
    );
 }
+BluredLayout.propTypes = {
+   children: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.array,
+   ]),
+   message: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+   ]),
+};
 
 const TopWithDede = (props) => {
    return(
@@ -89,12 +106,23 @@ const TopWithDede = (props) => {
    )
 }
 
+TopWithDede.propTypes = {
+   children: PropTypes.object,
+   message: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.array,
+   ]),
+}
+
 const Bottom = (props) =>{
    return(
       <View style={styles.bottom}>
-         {props.children}
+      {props.children}
       </View>
    )
+}
+Bottom .propTypes = {
+   children: PropTypes.object,
 }
 
 const styles = StyleSheet.create({

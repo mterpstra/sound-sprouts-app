@@ -8,7 +8,7 @@ function About(props) {
             Sound Sprouts Book series. They can continue the discussion that 
             was started with the books OR can be the starting point as well. 
             Much like the books, we use child-friendly interactions to 
-            facilitate speech sound development and language skills. Here's 
+            facilitate speech sound development and language skills. Here&apos;s 
             how they work!
 
             - Each app has a set of target sounds that are the focus, giving 

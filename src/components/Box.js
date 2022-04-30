@@ -1,8 +1,8 @@
-import React, { Component, useState, useEffect } from "react";
-import { View, Pressable } from 'react-native';
+import React from "react";
+import PropTypes from 'prop-types';
+import { Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '../values/colors.js';
-
 
 const MyBox = (props) => {
    const r = props.radius ? props.radius : 30;
@@ -30,5 +30,11 @@ const MyBox = (props) => {
       </Pressable>
    );
 }
+
+MyBox.propTypes = {
+   children: PropTypes.object,
+   radius: PropTypes.number,
+   onPress: PropTypes.func,
+};
 
 export default MyBox;

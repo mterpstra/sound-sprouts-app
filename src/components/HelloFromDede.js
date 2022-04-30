@@ -1,5 +1,6 @@
-import React, { Component, useRef } from "react";
-import { View, Image, Button, StyleSheet, Pressable, ImageBackground, Animated, Easing } from 'react-native';
+import React from "react";
+import PropTypes from 'prop-types';
+import { Button, StyleSheet, ImageBackground } from 'react-native';
 import { Layout, Top, Bottom } from "./Layout"
 import SpeechBubble from "./SpeechBubble"
 import { COLORS } from "../values/colors"
@@ -30,25 +31,21 @@ function HelloFromDede(props) {
 
    return (
       <Layout>
-         <Top>
-            <SpeechBubble message={message} 
-               onComplete = {speechComplete} />
-         </Top>
-
-         <Bottom>
-            <ImageBackground
-               source={dede}
-               style={styles.full}
-               imageStyle={{
-                  resizeMode: 'contain',
-               }}
-
-            >
-            </ImageBackground>
-         </Bottom>
+         <>
+            <Top>
+               <SpeechBubble message={message} onComplete={speechComplete} />
+            </Top>
+            <Bottom>
+               <ImageBackground source={dede} style={styles.full} imageStyle={{resizeMode: 'contain'}}/>
+            </Bottom>
+         </>
       </Layout>
    );
 }
+
+HelloFromDede.propTypes = {
+   navigation: PropTypes.object,
+};
 
 const styles = StyleSheet.create({
    full: 

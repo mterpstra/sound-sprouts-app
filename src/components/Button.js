@@ -1,4 +1,5 @@
-import React, { Component, useState, useEffect } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import { View, StyleSheet, Text, Dimensions } from 'react-native';
 import { COLORS } from '../values/colors.js';
 import { useFonts } from 'expo-font';
@@ -29,6 +30,14 @@ const HomeButton = (props) => {
       </View>
    );
 }
+
+HomeButton.propTypes = {
+   text: PropTypes.string,
+   onPress: PropTypes.func,
+};
+
+
+
 
 const styles = StyleSheet.create({
    button: {

@@ -1,14 +1,11 @@
-import React, { Component, useState, useEffect } from "react";
-import { Text, View, Image, StyleSheet, Button } from 'react-native';
+import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Layout from "./src/components/Layout"
 import Home from "./src/components/Home"
 import HelloFromDede from "./src/components/HelloFromDede"
 import ChoosePet from "./src/components/ChoosePet"
 import NamePet from "./src/components/NamePet"
-
 import { CartContext } from "./src/components/CartContext"
 
 import { COLORS } from "./src/values/colors"
@@ -47,8 +44,8 @@ const App = () => {
                   options={{ title:"" }} 
                />
 
-               </Stack.Navigator>
-            </NavigationContainer>
+            </Stack.Navigator>
+         </NavigationContainer>
       </CartContext.Provider>
    );
 }
