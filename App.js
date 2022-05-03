@@ -13,36 +13,39 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
 
-   const screenOptions = {
-      headerShown: true,
-      headerTransparent: true,
-      headerTintColor: COLORS.blue_dark,
-   };
 
    return ( 
       <CartContext.Provider value={{}}>
          <NavigationContainer>
-            <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Navigator>
 
-               <Stack.Screen name="Home" 
-                  component={Home} 
-                  options={{ title:"" }} 
-               />
+               {/* Custom Options to HIDE the header bar on the home screen */}
+               <Stack.Group screenOptions={{ headerShown:false }}>
+                  <Stack.Screen name="Home" component={Home} />
+               </Stack.Group>
 
-               <Stack.Screen name="HelloFromDede" 
-                  component={HelloFromDede} 
-                  options={{ title:""}}
-               />
+               {/* Custom Options to SHOW the header bar on all screens */}
+               <Stack.Group 
+                  screenOptions={{
+                     headerTransparent: true,
+                     headerTintColor: COLORS.blue_dark,
+                  }}>
 
-               <Stack.Screen name="ChoosePet" 
-                  component={ChoosePet} 
-                  options={{ title:"" }} 
-               />
+                  <Stack.Screen name="HelloFromDede" 
+                     component={HelloFromDede} 
+                     options={{ title:""}}
+                  />
 
-               <Stack.Screen name="NamePet" 
-                  component={NamePet} 
-                  options={{ title:"" }} 
-               />
+                  <Stack.Screen name="ChoosePet" 
+                     component={ChoosePet} 
+                     options={{ title:"" }} 
+                  />
+
+                  <Stack.Screen name="NamePet" 
+                     component={NamePet} 
+                     options={{ title:"" }} 
+                  />
+               </Stack.Group>
 
             </Stack.Navigator>
          </NavigationContainer>
