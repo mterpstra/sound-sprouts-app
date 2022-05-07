@@ -8,55 +8,30 @@ const NamePet = () => {
 
    const [name, onChangeName] = useState("");
    const cart = useContext(CartContext);
-   console.log("NamePet cart", cart);
-
    const message = "Name your " + cart.pet.toLowerCase();
    return (
       <BluredLayout message={message}>
-         <View style={{ 
-            flex:1, 
-         }}>
-            <View style={{ 
-               flex:0.6, 
-               flexDirection:"column",
-               justifyContent:"center",
-            }}>
-               <Image style={styles.img} source={cart.source}/>
+         <>
+            <View style={{ flex:1, position:"relative" }}>
+               <View style={{ position:"absolute", height:"100%", width:"100%", zIndex:2 }}>
+                  <Image source={cart.source} style={styles.img} />
+               </View>
+               <View style={{ position:"absolute", height:"80%", width:"80%", top:"10%", left:"10%", zIndex:1 }}>
+                  <MyBox>
+                  </MyBox>
+               </View>
             </View>
-            <View style={{ flex:0.4, 
-               flexDirection:"column",
-               justifyContent:"center",
-               alignItems:"center",
-            }}>
-               <TextInput 
-                  style={styles.input} 
-                  placeholder="Name"
-                  onChangeText={onChangeName}
-               />
-
-               <View style={{
-                  height: 60,
-                  width:"80%",
-               }}>
-                  <MyBox radius={15}
-                     onPress={() => { 
-                        cart.name = name;
-                        console.log(cart);
-                     }}
-                  >
-                     <View style={{
-                        flex:1,
-                        flexDirection:"column",
-                        justifyContent:"center",
-                        alignItems:"center",
-                     }}>
+            <View style={{ flex:0.4, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
+               <TextInput style={styles.input} placeholder="Name" onChangeText={onChangeName} />
+               <View style={{ height: 60, width:"80%" }}>
+                  <MyBox radius={15} onPress={() => { cart.name = name; console.log(cart); }} >
+                     <View style={{ flex:1, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
                         <Text style={{ color:"white",fontWeight:"bold" }}>Next</Text>
                      </View>
                   </MyBox>
                </View>
-
             </View>
-         </View>
+         </>
       </BluredLayout>
    );
 }
@@ -72,11 +47,10 @@ const styles = StyleSheet.create({
       borderRadius:15,
    },
    img: {
-      flex:0.8,
+      flex:1,
       width: undefined,
       height: undefined,
       resizeMode:'contain',
-      margin:20,
    },
 });
 
