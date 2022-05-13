@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from "./src/components/Home"
 import HelloFromDede from "./src/components/HelloFromDede"
 import ChoosePet from "./src/components/ChoosePet"
+import ChooseCatBowl from "./src/components/ChooseCatBowl"
 import NamePet from "./src/components/NamePet"
 import { CartContext } from "./src/components/CartContext"
 
@@ -43,6 +44,11 @@ const App = () => {
 
                   <Stack.Screen name="NamePet" 
                      component={NamePet} 
+                     options={{ title:"" }} 
+                  />
+
+                  <Stack.Screen name="ChooseCatBowl" 
+                     component={ChooseCatBowl} 
                      options={{ title:"" }} 
                   />
                </Stack.Group>

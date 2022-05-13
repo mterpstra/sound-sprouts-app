@@ -4,11 +4,15 @@ import { BluredLayout } from "./Layout"
 import MyBox from "./Box"
 import { CartContext } from "./CartContext"
 
-const NamePet = () => {
+const NamePet = (props) => {
 
    const [name, onChangeName] = useState("");
    const cart = useContext(CartContext);
+
+   console.log("NamePet", cart);
    const message = "Name your " + cart.pet.toLowerCase();
+
+
    return (
       <BluredLayout message={message}>
          <>
@@ -24,7 +28,10 @@ const NamePet = () => {
             <View style={{ flex:0.4, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
                <TextInput style={styles.input} placeholder="Name" onChangeText={onChangeName} />
                <View style={{ height: 60, width:"80%" }}>
-                  <MyBox radius={15} onPress={() => { cart.name = name; console.log(cart); }} >
+                  <MyBox radius={15} onPress={() => { 
+                     cart.name = name; 
+                     props.navigation.navigate('ChooseCatBowl');
+                  }} >
                      <View style={{ flex:1, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
                         <Text style={{ color:"white",fontWeight:"bold" }}>Next</Text>
                      </View>
