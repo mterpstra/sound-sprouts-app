@@ -1,8 +1,8 @@
 import React, { useContext, useState }  from "react"; 
 import { Text, View, Image, TextInput, StyleSheet } from 'react-native';
-import { BluredLayout } from "./Layout"
-import MyBox from "./Box"
-import { CartContext } from "./CartContext"
+import { BluredLayout } from "./Layout";
+import MyBox from "./Box";
+import { CartContext } from "./CartContext";
 
 const NamePet = (props) => {
 
@@ -11,7 +11,6 @@ const NamePet = (props) => {
 
    console.log("NamePet", cart);
    const message = "Name your " + cart.pet.toLowerCase();
-
 
    return (
       <BluredLayout message={message}>
@@ -30,7 +29,7 @@ const NamePet = (props) => {
                <View style={{ height: 60, width:"80%" }}>
                   <MyBox radius={15} onPress={() => { 
                      cart.name = name; 
-                     props.navigation.navigate('ChooseCatBowl');
+                     props.navigation.navigate("Item1");
                   }} >
                      <View style={{ flex:1, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
                         <Text style={{ color:"white",fontWeight:"bold" }}>Next</Text>

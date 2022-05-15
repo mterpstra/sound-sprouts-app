@@ -7,12 +7,12 @@ import MyBox from "./Box"
 import { COLORS } from '../values/colors.js';
 import { CartContext } from "./CartContext"
 
-const dog = require('../../images/dog.png');
-const cat = require('../../images/cat.png');
-const rabbit = require('../../images/rabbit.png');
-const turtle = require('../../images/turtle.png');
-const parrot = require('../../images/parrot.png');
-const hamster = require('../../images/hamster.png');
+const dog = require('../../images/dog/dog.png');
+const cat = require('../../images/cat/cat.png');
+const bunny = require('../../images/bunny/bunny.png');
+const turtle = require('../../images/turtle/turtle.png');
+const parrot = require('../../images/parrot/parrot.png');
+const hamster = require('../../images/hamster/hamster.png');
 
 const message = [
    "We have lots of nice pets to choose from!",
@@ -86,7 +86,7 @@ const ChoosePet = (props) => {
             {/* Row 2 */}
             <View style={styles.row}>
                <View style={styles.col}>
-                  <Pet source={rabbit} pet="rabbit" {...props}/> 
+                  <Pet source={bunny} pet="bunny" {...props}/> 
                </View>
                <View style={styles.col}>
                   <Pet source={turtle} pet="turtle" {...props}/> 
