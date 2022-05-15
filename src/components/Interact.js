@@ -15,37 +15,9 @@ const Interact = (props) => {
    return (
       <BluredLayout message={message}>
 
-         <Image 
-            source={cart.source}
-            style={{
-               flex:1,
-               width: undefined,
-               height: undefined,
-               resizeMode:'contain',
-            }}
-         />
-
-         {cart.item1.image &&
-         <Image 
-            source={cart.item1.image}
-            style={{
-               flex:1,
-               width: undefined,
-               height: undefined,
-               resizeMode:'contain',
-            }}
-         />
-         }
-
-         {cart.item1.text &&
-            <Text style={{fontSize:20}}>
-               {cart.item1.text}
-            </Text>
-         }
-
-         {cart.item2.image &&
+         <>
             <Image 
-               source={cart.item2.image}
+               source={cart.source}
                style={{
                   flex:1,
                   width: undefined,
@@ -53,17 +25,10 @@ const Interact = (props) => {
                   resizeMode:'contain',
                }}
             />
-         }
 
-         {cart.item2.text &&
-            <Text style={{fontSize:20}}>
-               {cart.item2.text}
-            </Text>
-         }
-
-         {cart.item3.image &&
+            {cart.item1.image &&
             <Image 
-               source={cart.item3.image}
+               source={cart.item1.image}
                style={{
                   flex:1,
                   width: undefined,
@@ -71,21 +36,58 @@ const Interact = (props) => {
                   resizeMode:'contain',
                }}
             />
-         }
+            }
 
-         {cart.item3.text &&
-            <Text style={{fontSize:20}}>
-               {cart.item3.text}
-            </Text>
-         }
+            {cart.item1.text &&
+               <Text style={{fontSize:20}}>
+                  {cart.item1.text}
+               </Text>
+            }
+
+            {cart.item2.image &&
+               <Image 
+                  source={cart.item2.image}
+                  style={{
+                     flex:1,
+                     width: undefined,
+                     height: undefined,
+                     resizeMode:'contain',
+                  }}
+               />
+            }
+
+            {cart.item2.text &&
+               <Text style={{fontSize:20}}>
+                  {cart.item2.text}
+               </Text>
+            }
+
+            {cart.item3.image &&
+               <Image 
+                  source={cart.item3.image}
+                  style={{
+                     flex:1,
+                     width: undefined,
+                     height: undefined,
+                     resizeMode:'contain',
+                  }}
+               />
+            }
+
+            {cart.item3.text &&
+               <Text style={{fontSize:20}}>
+                  {cart.item3.text}
+               </Text>
+            }
 
 
-         <View style={{backgroundColor:"white"}}>
-            <Text style={{fontSize:20}}>
-               {JSON.stringify(cart, null, 4)} 
-            </Text>
-         </View>
+            <View style={{backgroundColor:"white"}}>
+               <Text style={{fontSize:20}}>
+                  {JSON.stringify(cart, null, 4)} 
+               </Text>
+            </View>
 
+         </>
       </BluredLayout>
    );
 }
