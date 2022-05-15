@@ -16,7 +16,7 @@ const Row = (props) => {
                text={ITEMS[props.cart.pet].Item1.Items[props.index].text} 
                onPress={() => 
                   {
-                     props.cart.item1 = ITEMS[props.cart.pet].Item1.Items[props.index].image; 
+                     props.cart.item1 = ITEMS[props.cart.pet].Item1.Items[props.index]; 
                      props.navigation.navigate("Item2");
                   }
                }
@@ -28,7 +28,7 @@ const Row = (props) => {
                text={ITEMS[props.cart.pet].Item1.Items[props.index+1].text} 
                onPress={() => 
                   {
-                     props.cart.item1 = ITEMS[props.cart.pet].Item1.Items[props.index+1].image; 
+                     props.cart.item1 = ITEMS[props.cart.pet].Item1.Items[props.index+1]; 
                      props.navigation.navigate("Item2");
                   }
                }

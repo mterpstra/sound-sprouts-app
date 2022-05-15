@@ -8,6 +8,7 @@ import ChoosePet from "./src/components/ChoosePet"
 import Item1 from "./src/components/Item1"
 import Item2 from "./src/components/Item2"
 import Item3 from "./src/components/Item3"
+import Interact from "./src/components/Interact"
 import NamePet from "./src/components/NamePet"
 import { CartContext } from "./src/components/CartContext"
 
@@ -61,6 +62,11 @@ const App = () => {
 
                   <Stack.Screen name="Item3" 
                      component={Item3} 
+                     options={{ title:"" }} 
+                  />
+
+                  <Stack.Screen name="Interact" 
+                     component={Interact} 
                      options={{ title:"" }} 
                   />
 

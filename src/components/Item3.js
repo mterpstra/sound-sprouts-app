@@ -14,6 +14,12 @@ const Row = (props) => {
             <Item 
                source={ITEMS[props.cart.pet].Item3.Items[props.index].image} 
                text={ITEMS[props.cart.pet].Item3.Items[props.index].text} 
+               onPress={() => 
+                  {
+                     props.cart.item3 = ITEMS[props.cart.pet].Item3.Items[props.index]; 
+                     props.navigation.navigate("Interact");
+                  }
+               } 
             />
          </View>
          {ITEMS[props.cart.pet].Item3.Items[props.index+1] &&
@@ -21,6 +27,12 @@ const Row = (props) => {
             <Item 
                source={ITEMS[props.cart.pet].Item3.Items[props.index+1].image} 
                text={ITEMS[props.cart.pet].Item3.Items[props.index+1].text} 
+               onPress={() => 
+                  {
+                     props.cart.item3 = ITEMS[props.cart.pet].Item3.Items[props.index+1]; 
+                     props.navigation.navigate("Interact");
+                  }
+               } 
             />
          </View>
          }
