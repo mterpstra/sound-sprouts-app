@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Dimensions } from "react-native";
 import { View, Text, StyleSheet, } from 'react-native';
 
-const speed=1;
+const speed=100;
 const COLOR="#faf9d1";
 
 class SpeechBubble extends Component {
