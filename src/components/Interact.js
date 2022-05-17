@@ -1,13 +1,9 @@
 import React, { useContext } from "react"; 
-import PropTypes from 'prop-types';
 import { Text, View, Image } from 'react-native';
 import { BluredLayout } from "./Layout"
-import Item from "./Item"
-import { COLORS } from '../values/colors.js';
-import { ITEMS } from '../values/items.js';
 import { CartContext } from "./CartContext"
 
-const Interact = (props) => {
+const Interact = () => {
 
    const cart = useContext(CartContext);
    const message = `Lets play with ${cart.name}`;

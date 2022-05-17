@@ -1,17 +1,16 @@
-import React, { useContext } from "react"; 
+import React  from "react"; 
 import PropTypes from 'prop-types';
 import { Text, View, Image, StyleSheet, Dimensions } from 'react-native';
 import { useFonts } from 'expo-font';
 import MyBox from "./Box"
 import { COLORS } from '../values/colors.js';
-import { CartContext } from "./CartContext"
 
 const width = Dimensions.get('window').width;
 const FONT_SIZE=(width > 500) ? 60 : 30;
 
+
 const Item = (props) => {
 
-   const cart = useContext(CartContext);
    const text = props.text ? props.text : "";
 
    let [fontsLoaded] = useFonts({
@@ -37,12 +36,10 @@ const Item = (props) => {
 }
 
 Item.propTypes = {
+   text: PropTypes.string,
    source: PropTypes.number,
-   pet: PropTypes.string,
-   name: PropTypes.string,
-   navigation: PropTypes.object,
+   onPress: PropTypes.func,
 };
-
 
 const styles = StyleSheet.create({
    box: {
