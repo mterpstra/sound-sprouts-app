@@ -19,11 +19,12 @@ const next = (current) => {
    }
 }
 
-const Row = (props) => {
+const Col = (props) => {
    const item = props.route.name.toLowerCase();
-   console.log("row item", item);
+   console.log("col item", props.index, item);
    return (
-      <View style={{ flex:0.3, flexDirection:"row", justifyContent:"space-evenly"}}>
+      <>
+         {ITEMS[props.cart.pet][item].items[props.index] &&
          <View style={{ flex:0.4 }}>
             <Item 
                source={ITEMS[props.cart.pet][item].items[props.index].image} 
@@ -35,24 +36,20 @@ const Row = (props) => {
                }}
             />
          </View>
-         {ITEMS[props.cart.pet][item].items[props.index+1] &&
-         <View style={{ flex:0.4 }}>
-            <Item 
-               source={ITEMS[props.cart.pet][item].items[props.index+1].image} 
-               text={ITEMS[props.cart.pet][item].items[props.index+1].text} 
-               onPress={() => { 
-                  const item = props.route.name.toLowerCase();
-                  props.cart[item] = ITEMS[props.cart.pet][item].items[props.index+1]; 
-                  props.navigation.navigate(next(item));
-               }}
-            />
-         </View>
          }
+      </>
+   );
+}
+
+const Row = (props) => {
+   return (
+      <View style={{ flex:0.3, flexDirection:"row", justifyContent:"space-evenly"}}>
+         <Col {...props} />
+         <Col {...props} index={props.index+1} />
       </View>
    );
 }
 
-/* TODO: Finish making this generic... */
 const ChooseItem = (props) => {
 
    const item = props.route.name.toLowerCase();
@@ -67,9 +64,7 @@ const ChooseItem = (props) => {
       <BluredLayout message={message}>
          <View style={{ flex:1, flexDirection:"column", justifyContent:"space-evenly"}}>
             <Row index={0} cart={cart} {...props} />
-            {ITEMS[cart.pet][item].items.length > 2 &&
             <Row index={2} cart={cart} {...props}/>
-            }
          </View>
       </BluredLayout>
    );
