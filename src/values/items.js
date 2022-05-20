@@ -4,17 +4,20 @@ export const ITEMS = {
          "type": "BOWL",
          "items": [
             {
-               "image": require('../../images/dog/item1/DogBowl.jpeg'),
-               "text":"Red Dog Dish",
+               "image": require('../../images/dog/item1/PolkadotBowl.png'),
+               "text":"Polkadot Dish", 
             },
             {
+               "image": require('../../images/dog/item1/RedBowl.png'),
+               "text":"Red Dish",
+            },
+            {
+               "image": require('../../images/dog/item1/PawPrintBowl.png'),
                "text":"Paw Print Dish",
             },
             {
-               "text":"Bones Dish",
-            },
-            {
-               "text":"Polkadot Dish", 
+               "image": require('../../images/dog/item1/BoneBowl.png'),
+               "text":"Dog Bone Dish", 
             },
          ]
       },
