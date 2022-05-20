@@ -63,19 +63,19 @@ export const ITEMS = {
          "items": [
             {
                "image": require('../../images/cat/item1/BlueCatBowl.png'),
-               "text":"Blue Cat Bowl",
+               "text":"Fish Dish",
             },
             {
                "image": require('../../images/cat/item1/RedCatBowl.png'),
-               "text":"Red Cat Bowl",
+               "text":"Red Dish",
             },
             {
                "image": require('../../images/cat/item1/OrangeCatBowl.png'),
-               "text":"Orange Cat Bowl",
+               "text":"Paw Print Dish",
             },
             {
                "image": require('../../images/cat/item1/WhiteCatBowl.png'),
-               "text":"White Cat Bowl",
+               "text":"Mouse Dish",
             },
          ]
       },

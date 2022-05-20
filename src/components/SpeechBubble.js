@@ -74,7 +74,6 @@ class SpeechBubble extends Component {
                   : <View style={styles.arrowBottom}/>
                }
             </View>
-
          </View>
       );
    }
@@ -104,6 +103,8 @@ const styles = StyleSheet.create({
       padding:10,
       marginBottom:20,
       backgroundColor:COLOR,
+      borderColor:"#bab480",
+      borderWidth:3,
       flex:0.9,
       marginRight:"auto",
       marginLeft:"auto",
