@@ -1,8 +1,8 @@
 export const ITEMS = {
    "dog": {
-      "Item1" : {
+      "item1" : {
          "type": "BOWL",
-         "Items": [
+         "items": [
             {
                "image": require('../../images/dog/item1/DogBowl.jpeg'),
                "text":"Red Dog Dish",
@@ -18,9 +18,9 @@ export const ITEMS = {
             },
          ]
       },
-      "Item2" : {
+      "item2" : {
          "type": "food",
-         "Items": [
+         "items": [
             {
                "image": require('../../images/dog/item2/DogFood.jpeg'),
                "text":"Wet Food",
@@ -36,9 +36,9 @@ export const ITEMS = {
             },
          ]
       },
-      "Item3" : {
+      "item3" : {
          "type": "toy",
-         "Items": [
+         "items": [
             {
                "text":"Dog Teeth Toy",
             },
@@ -55,9 +55,9 @@ export const ITEMS = {
       },
    },
    "cat": {
-      "Item1" : {
+      "item1" : {
          "type": "bowl",
-         "Items": [
+         "items": [
             {
                "image": require('../../images/cat/item1/BlueCatBowl.png'),
                "text":"Blue Cat Bowl",
@@ -76,9 +76,9 @@ export const ITEMS = {
             },
          ]
       },
-      "Item2" : {
+      "item2" : {
          "type": "food",
-         "Items": [
+         "items": [
             {
                "image": require('../../images/cat/item2/CatFood.webp'),
                "text":"Wet Food",
@@ -94,9 +94,9 @@ export const ITEMS = {
             },
          ]
       },
-      "Item3" : {
+      "item3" : {
          "type": "toy",
-         "Items": [
+         "items": [
             {
                "text":"Toy Wand",
             },
@@ -110,9 +110,9 @@ export const ITEMS = {
       },
    },
    "bunny": {
-      "Item1": {
+      "item1": {
          "type": "cage",
-         "Items": [
+         "items": [
             {
                "image": require('../../images/bunny/item1/Cage1.jpeg'),
                "text":"Tall Red Cage",
@@ -123,9 +123,9 @@ export const ITEMS = {
             },
          ]
       },
-      "Item2": {
+      "item2": {
          "type": "food",
-         "Items": [
+         "items": [
             {
                "text":"Pellets",
             },
@@ -140,9 +140,9 @@ export const ITEMS = {
             },
          ]
       },
-      "Item3": {
+      "item3": {
          "type": "toy",
-         "Items": [
+         "items": [
             {
                "text":"Tunnel",
             },
@@ -153,9 +153,9 @@ export const ITEMS = {
       },
    },
    "parrot": {
-      "Item1" : {
+      "item1" : {
          "type": "cage",
-         "Items": [
+         "items": [
             {
                "text":"Round Bird Cage",
             },
@@ -164,9 +164,9 @@ export const ITEMS = {
             },
          ]
       },
-      "Item2" : {
+      "item2" : {
          "type": "food",
-         "Items": [
+         "items": [
             {
                "text":"Seeds",
             },
@@ -178,9 +178,9 @@ export const ITEMS = {
             },
          ]
       },
-      "Item3" : {
+      "item3" : {
          "type": "toy",
-         "Items": [
+         "items": [
             {
                "text":"Swing",
             },
@@ -197,9 +197,9 @@ export const ITEMS = {
       },
    },
    "hamster": {
-      "Item1" : {
+      "item1" : {
          "type": "cage",
-         "Items": [
+         "items": [
             {
                "text":"Dark Red Hamster Cage",
             },
@@ -208,9 +208,9 @@ export const ITEMS = {
             },
          ]
       },
-      "Item2" : {
+      "item2" : {
          "type": "food",
-         "Items": [
+         "items": [
             {
                "text":"Hamster Pellets",
             },
@@ -225,9 +225,9 @@ export const ITEMS = {
             },
          ]
       },
-      "Item3" : {
+      "item3" : {
          "type": "toy",
-         "Items": [
+         "items": [
             {
                "text":"Tunnel",
             },
@@ -244,9 +244,9 @@ export const ITEMS = {
       },
    },
    "turtle": {
-      "Item1": {
+      "item1": {
          "type": "tank",
-         "Items": [
+         "items": [
             {
                "text":"Red/Teal Tank",
             },
@@ -255,9 +255,9 @@ export const ITEMS = {
             },
          ]
       },
-      "Item2": {
+      "item2": {
          "type": "food",
-         "Items": [
+         "items": [
             {
                "text":"Crickets",
             },
@@ -272,9 +272,9 @@ export const ITEMS = {
             },
          ]
       },
-      "Item3": {
+      "item3": {
          "type": "toy",
-         "Items": [
+         "items": [
             {
                "text":"Tree Log",
             },

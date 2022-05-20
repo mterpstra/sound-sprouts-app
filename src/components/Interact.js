@@ -12,6 +12,7 @@ const Interact = () => {
       <BluredLayout message={message}>
 
          <>
+
             <Image 
                source={cart.source}
                style={{
@@ -75,7 +76,6 @@ const Interact = () => {
                   {cart.item3.text}
                </Text>
             }
-
 
             <View style={{backgroundColor:"white"}}>
                <Text style={{fontSize:20}}>
