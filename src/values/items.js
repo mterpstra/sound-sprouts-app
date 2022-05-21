@@ -83,16 +83,19 @@ export const ITEMS = {
          "type": "food",
          "items": [
             {
-               "image": require('../../images/cat/item2/CatFood.webp'),
+               "image": require('../../images/cat/item2/WetCatFood.png'),
                "text":"Wet Food",
             },
             {
+               "image": require('../../images/cat/item2/Tuna.png'),
                "text":"Tuna",
             },
             {
+               "image": require('../../images/cat/item2/DryCatFood.png'),
                "text":"Dry Food",
             },
             {
+               "image": require('../../images/cat/item2/Turkey.png'),
                "text":"Turkey",
             },
          ]
