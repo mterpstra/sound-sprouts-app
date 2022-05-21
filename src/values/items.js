@@ -25,17 +25,20 @@ export const ITEMS = {
          "type": "food",
          "items": [
             {
-               "image": require('../../images/dog/item2/DogFood.jpeg'),
+               "image": require('../../images/dog/item2/WetDogFood.png'),
                "text":"Wet Food",
             },
             {
-               "text":"Turkey",
+               "image": require('../../images/dog/item2/Steak.png'),
+               "text":"Steak",
             },
             {
+               "image": require('../../images/dog/item2/DryDogFood.png'),
                "text":"Dry Food",
             },
             {
-               "text":"Steak",
+               "image": require('../../images/dog/item2/Turkey.png'),
+               "text":"Turkey",
             },
          ]
       },
