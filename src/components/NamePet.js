@@ -4,40 +4,44 @@ import { BluredLayout } from "./Layout";
 import MyBox from "./Box";
 import { CartContext } from "./CartContext";
 
-const NamePet = (props) => {
 
+const Inner = (props) => {
    const [name, onChangeName] = useState("");
    const cart = useContext(CartContext);
+   return (
+      <>
+         <View style={{ flex:1, position:"relative" }}>
+            <View style={{ position:"absolute", height:"100%", width:"100%", zIndex:2 }}>
+               <Image source={cart.source} style={styles.img} />
+            </View>
+            <View style={{ position:"absolute", height:"80%", width:"80%", top:"10%", left:"10%", zIndex:1 }}>
+               <MyBox>
+               </MyBox>
+            </View>
+         </View>
+         <View style={{ flex:0.4, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
+            <TextInput style={styles.input} placeholder="Name" onChangeText={onChangeName} />
+            <View style={{ height: 60, width:"80%" }}>
+               <MyBox radius={15} onPress={() => { 
+                  cart.name = name; 
+                  props.navigation.navigate("Item1");
+               }} >
+                  <View style={{ flex:1, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
+                     <Text style={{ color:"white",fontWeight:"bold" }}>Next</Text>
+                  </View>
+               </MyBox>
+            </View>
+         </View>
+      </>
+   );
+}
 
-   console.log("NamePet", cart);
+const NamePet = (props) => {
+   const cart = useContext(CartContext);
    const message = "Name your " + cart.pet.toLowerCase();
-
    return (
       <BluredLayout message={message}>
-         <>
-            <View style={{ flex:1, position:"relative" }}>
-               <View style={{ position:"absolute", height:"100%", width:"100%", zIndex:2 }}>
-                  <Image source={cart.source} style={styles.img} />
-               </View>
-               <View style={{ position:"absolute", height:"80%", width:"80%", top:"10%", left:"10%", zIndex:1 }}>
-                  <MyBox>
-                  </MyBox>
-               </View>
-            </View>
-            <View style={{ flex:0.4, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
-               <TextInput style={styles.input} placeholder="Name" onChangeText={onChangeName} />
-               <View style={{ height: 60, width:"80%" }}>
-                  <MyBox radius={15} onPress={() => { 
-                     cart.name = name; 
-                     props.navigation.navigate("Item1");
-                  }} >
-                     <View style={{ flex:1, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
-                        <Text style={{ color:"white",fontWeight:"bold" }}>Next</Text>
-                     </View>
-                  </MyBox>
-               </View>
-            </View>
-         </>
+         <Inner {...props}/>
       </BluredLayout>
    );
 }

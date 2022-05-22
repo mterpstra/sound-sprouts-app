@@ -1,82 +1,82 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from 'prop-types';
 import { Dimensions } from "react-native";
+import { useFonts } from 'expo-font';
 import { View, Text, StyleSheet, } from 'react-native';
 
-const speed=1;
 const COLOR="#faf9d1";
 
-class SpeechBubble extends Component {
+const SpeechBubble = (props) => {
 
-   state = {
-      msg:"",
-      index:0,
-      line:0
+   let index = useRef(0);
+   let line = useRef(0);
+   let speed = useRef(100);
+   let speech = useRef([]);
+
+   const [msg, setMsg] = useState("");
+
+   if (Array.isArray(props.message)) {
+      speech = props.message;
+   } else {
+      speech[0] = props.message;
    }
 
-   constructor(props) {
-      super(props);
-      this.state.index = 0;
-   }
+   useEffect(() => {
+      var timer1, timer2;
+      timer1 = setTimeout(() => {
 
-   componentDidMount() {
-
-      var speech =[];
-      if (Array.isArray(this.props.message)) {
-         speech = this.props.message;
-      } else {
-         speech[0] = this.props.message;
-      }
-
-      this._interval = setInterval(() => {
-
-         if (this.state.index < speech[this.state.line].length) {
-
-            this.setState({
-               msg: this.state.msg + speech[this.state.line][this.state.index],
-               index: this.state.index+1,
-            });
-
-            return;
-         } 
-
-         if (this.state.line < speech.length-1) {
-
-            this.setState({
-               line: this.state.line+1,
-               index: 0,
-               msg: "",
-            });
-
+         if (index.current < speech[line.current].length) {
+            setMsg(msg + speech[line.current][index.current]);
+            index.current++;
+            speed.current=50;
             return;
          }
 
-         clearInterval(this._interval);
-
-         if (this.props.onComplete) {
-            this.props.onComplete();
+         if (line.current < speech.length-1) {
+            line.current++;
+            index.current = 0;
+            timer2 = setTimeout(() => {
+               setMsg("");
+            }, 1000);
+            return;
          }
 
-      }, speed);
+         if (props.onComplete) {
+            props.onComplete();
+         }
+         index.current=0;
+         speech=[];
+         line.current = 0;
+
+      }, speed.current);
+
+      return (() => {
+         clearTimeout(timer1);
+         clearTimeout(timer2);
+      });
+   });
+
+
+   let [fontsLoaded] = useFonts({
+      'Patrick-Hand': require('../../assets/fonts/PatrickHand-Regular.ttf'),
+   });
+
+   if (!fontsLoaded) {
+      return <View/>;
    }
 
-   componentWillUnmount() {
-      clearInterval(this._interval);
-   }
 
-   render() {
-      return (
-         <View style={styles.bubbleContainer}>
-            <View style={styles.textContainer}>
-               <Text style={styles.text}>{this.state.msg}</Text>
-               {this.props.arrow && this.props.arrow == "left" 
-                  ? <View style={styles.arrowLeft}/>
-                  : <View style={styles.arrowBottom}/>
-               }
-            </View>
+   return (
+      <View style={styles.bubbleContainer}>
+         <View style={styles.textContainer}>
+            <Text style={styles.text}>{msg}</Text>
+            {props.arrow && props.arrow == "left" 
+               ? <View style={styles.arrowLeft}/>
+               : <View style={styles.arrowBottom}/>
+            }
          </View>
-      );
-   }
+      </View>
+   );
 }
 
 SpeechBubble.propTypes = {
@@ -91,7 +91,8 @@ SpeechBubble.propTypes = {
 const styles = StyleSheet.create({
 
    text: {
-      fontSize: Dimensions.get('window').width > 1000 ? 35 : 15,
+      fontSize: Dimensions.get('window').width > 1000 ? 40 : 20,
+      fontFamily: 'Patrick-Hand',
    },
 
    bubbleContainer: {

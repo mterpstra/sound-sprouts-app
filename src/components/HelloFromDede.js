@@ -5,7 +5,8 @@ import { Layout, Top, Bottom } from "./Layout"
 import SpeechBubble from "./SpeechBubble"
 import { COLORS } from "../values/colors"
 
-const dede = require('../../images/Dede.png')
+//const dede = require('../../images/Dede.png')
+const dede = require('../../images/Dede.gif')
 
 function HelloFromDede(props) {
 
@@ -36,7 +37,9 @@ function HelloFromDede(props) {
                <SpeechBubble message={message} onComplete={speechComplete} />
             </Top>
             <Bottom>
-               <ImageBackground source={dede} style={styles.full} imageStyle={{resizeMode: 'contain'}}/>
+               <ImageBackground source={dede} 
+                  style={styles.full} 
+                  imageStyle={{resizeMode: 'contain'}}/>
             </Bottom>
          </>
       </Layout>
