@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Dimensions } from "react-native";
 import { useFonts } from 'expo-font';
 import { View, Text, StyleSheet, } from 'react-native';
+import { COLORS } from '../values/colors.js';
 
 const COLOR="#faf9d1";
 
@@ -93,6 +94,7 @@ const styles = StyleSheet.create({
    text: {
       fontSize: Dimensions.get('window').width > 1000 ? 40 : 20,
       fontFamily: 'Patrick-Hand',
+      color: COLORS.brown_dark,
    },
 
    bubbleContainer: {
