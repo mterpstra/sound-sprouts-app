@@ -1,6 +1,7 @@
 import React, { useContext, useState }  from "react"; 
 import { Text, View, Image, TextInput, StyleSheet } from 'react-native';
 import { BluredLayout } from "./Layout";
+import PropTypes from 'prop-types';
 import MyBox from "./Box";
 import { CartContext } from "./CartContext";
 
@@ -15,8 +16,7 @@ const Inner = (props) => {
                <Image source={cart.source} style={styles.img} />
             </View>
             <View style={{ position:"absolute", height:"80%", width:"80%", top:"10%", left:"10%", zIndex:1 }}>
-               <MyBox>
-               </MyBox>
+               <MyBox/>
             </View>
          </View>
          <View style={{ flex:0.4, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
@@ -35,6 +35,10 @@ const Inner = (props) => {
       </>
    );
 }
+
+Inner.propTypes = {
+   navigation: PropTypes.object,
+};
 
 const NamePet = (props) => {
    const cart = useContext(CartContext);

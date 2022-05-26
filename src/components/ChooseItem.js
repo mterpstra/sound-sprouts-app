@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { BluredLayout } from "./Layout"
 import Item from "./Item"
-import { COLORS } from '../values/colors.js';
 import { ITEMS } from '../values/items.js';
 import { CartContext } from "./CartContext"
 
@@ -40,6 +39,12 @@ const Col = (props) => {
       </>
    );
 }
+Col.propTypes = {
+   cart: PropTypes.object,
+   navigation: PropTypes.object,
+   route: PropTypes.object,
+   index: PropTypes.number,
+};
 
 const Row = (props) => {
    return (
@@ -49,6 +54,9 @@ const Row = (props) => {
       </View>
    );
 }
+Row.propTypes = {
+   index: PropTypes.number,
+};
 
 const ChooseItem = (props) => {
 
@@ -69,5 +77,8 @@ const ChooseItem = (props) => {
       </BluredLayout>
    );
 }
+ChooseItem.propTypes = {
+   route: PropTypes.object,
+};
 
 export default ChooseItem;
