@@ -7,6 +7,12 @@ import { COLORS } from '../values/colors.js';
 
 const COLOR="#faf9d1";
 
+const windowWidth =  parseInt(Dimensions.get('window').width);
+const fontSize = windowWidth > 1000 ? 40 : 20;
+const lineHeight = windowWidth > 1000 ? 42 : 22;
+console.log("windowWidth", windowWidth, fontSize, lineHeight);
+
+
 const SpeechBubble = (props) => {
 
    let index = useRef(0);
@@ -92,7 +98,8 @@ SpeechBubble.propTypes = {
 const styles = StyleSheet.create({
 
    text: {
-      fontSize: Dimensions.get('window').width > 1000 ? 40 : 20,
+      fontSize: fontSize,
+      lineHeight: lineHeight,
       fontFamily: 'Patrick-Hand',
       color: COLORS.brown_dark,
    },
