@@ -4,6 +4,8 @@ import { Button, StyleSheet, ImageBackground } from 'react-native';
 import { Layout, Top, Bottom } from "./Layout"
 import SpeechBubble from "./SpeechBubble"
 import { COLORS } from "../values/colors"
+import Sound from "./Sound"
+
 
 //const dede = require('../../images/Dede.png')
 const dede = require('../../images/Dede.gif')
@@ -33,6 +35,7 @@ function HelloFromDede(props) {
    return (
       <Layout>
          <>
+            <Sound/>
             <Top>
                <SpeechBubble message={message} onComplete={speechComplete} />
             </Top>
