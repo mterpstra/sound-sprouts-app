@@ -107,13 +107,20 @@ export const ITEMS = {
          "type": "toy",
          "items": [
             {
+               "image": require('../../images/cat/item3/Wand.png'),
                "text":"Toy Wand",
             },
             {
-               "text":"Catnip",
+               "image": require('../../images/cat/item3/Mouse.png'),
+               "text":"Toy Mouse",
             },
             {
+               "image": require('../../images/cat/item3/Tower.png'),
                "text":"Cat Tower",
+            },
+            {
+               "image": require('../../images/cat/item3/Catnip.png'),
+               "text":"Cat Nip",
             },
          ]
       },
