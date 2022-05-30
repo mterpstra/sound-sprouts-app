@@ -1,6 +1,7 @@
 import React, { useContext, useState }  from "react"; 
-import { Text, View, Image, TextInput, StyleSheet } from 'react-native';
+import { Text, View, Image, TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import { BluredLayout } from "./Layout";
+import { COLORS } from "../values/colors.js";
 import PropTypes from 'prop-types';
 import MyBox from "./Box";
 import { CartContext } from "./CartContext";
@@ -10,7 +11,11 @@ const Inner = (props) => {
    const [name, onChangeName] = useState("");
    const cart = useContext(CartContext);
    return (
-      <>
+      <KeyboardAvoidingView 
+         style={{flex:1}} 
+         behavior="height"
+         keyboardVerticalOffset={160}
+      >
          <View style={{ flex:1, position:"relative" }}>
             <View style={{ position:"absolute", height:"100%", width:"100%", zIndex:2 }}>
                <Image source={cart.source} style={styles.img} />
@@ -20,7 +25,10 @@ const Inner = (props) => {
             </View>
          </View>
          <View style={{ flex:0.4, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
-            <TextInput style={styles.input} placeholder="Name" onChangeText={onChangeName} />
+            <TextInput style={styles.input} 
+               placeholder="Name"
+               placeholderTextColor="#bab480"
+               onChangeText={onChangeName} />
             <View style={{ height: 60, width:"80%" }}>
                <MyBox radius={15} onPress={() => { 
                   cart.name = name; 
@@ -32,7 +40,7 @@ const Inner = (props) => {
                </MyBox>
             </View>
          </View>
-      </>
+      </KeyboardAvoidingView>
    );
 }
 
@@ -52,11 +60,13 @@ const NamePet = (props) => {
 
 const styles = StyleSheet.create({
    input: {
+      color: COLORS.brown_dark,
       width:"80%",
-      backgroundColor:"white",
+      backgroundColor:"#faf9d1",
+      borderColor:"#bab480",
+      borderWidth: 3,
       height: 60,
       margin: 12,
-      borderWidth: 1,
       padding: 10,
       borderRadius:15,
    },
