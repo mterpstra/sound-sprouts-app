@@ -62,7 +62,7 @@ export const ITEMS = {
    },
    "cat": {
       "item1" : {
-         "type": "bowl",
+         "type": "dish",
          "items": [
             {
                "image": require('../../images/cat/item1/BlueCatBowl.png'),
