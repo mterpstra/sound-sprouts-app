@@ -6,7 +6,8 @@ import SpeechBubble from "./SpeechBubble"
 import { COLORS } from "../values/colors"
 import Sound from "./Sound"
 
-const dede = require('../../images/Dede.gif')
+const dede = require('../../images/Dede.gif');
+const audio = require('../../assets/audio/HelloFromDede.mp3');
 
 function HelloFromDede(props) {
 
@@ -33,7 +34,7 @@ function HelloFromDede(props) {
    return (
       <Layout>
          <>
-            <Sound audio={require('../../assets/HelloFromDede.mp3')} /> 
+            <Sound audio={audio} /> 
             <Top>
                <SpeechBubble message={message} onComplete={speechComplete} />
             </Top>
