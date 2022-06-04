@@ -66,7 +66,7 @@ const ChooseItem = (props) => {
    const cart = useContext(CartContext);
    console.log("ChooseItem(cart):", cart);
 
-   const message = `Lets choose a ${ITEMS[cart.pet][item].type} for ${cart.name}`;
+   const message = `Lets choose a ${ITEMS[cart.pet][item].type} for your new friend.`;
 
    return (
       <BluredLayout message={message}>

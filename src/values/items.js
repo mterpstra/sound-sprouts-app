@@ -1,7 +1,7 @@
 export const ITEMS = {
    "dog": {
       "item1" : {
-         "type": "BOWL",
+         "type": "dish",
          "items": [
             {
                "image": require('../../images/dog/item1/PolkadotBowl.png'),

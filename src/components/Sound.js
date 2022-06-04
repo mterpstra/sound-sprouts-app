@@ -1,14 +1,13 @@
 import React from "react";
 import { Audio } from 'expo-av';
+import PropTypes from 'prop-types';
 
 const Sound = (props) => {
    const [sound, setSound] = React.useState();
 
    async function playSound() {
       console.log('Loading Sound');
-      const { sound } = await Audio.Sound.createAsync(
-         require('../../assets/HelloFromDede.m4a')
-      );
+      const { sound } = await Audio.Sound.createAsync(props.audio);
       setSound(sound);
       console.log('Playing Sound');
       await sound.playAsync(); 
@@ -34,5 +33,9 @@ const Sound = (props) => {
       </>
    );
 }
+
+Sound.propTypes = {
+   audio: PropTypes.number,
+};
 
 export default Sound;
