@@ -70,7 +70,6 @@ const Interact= () => {
             justifyContent: "center",
          }}>
 
-
          <View style={{...styles.spotA, ...styles.box}} onLayout={(e) => {drops['spotA'] = e.nativeEvent.layout}} />
          <View style={{...styles.spotB, ...styles.box}} onLayout={(e) => {drops['spotB'] = e.nativeEvent.layout}} />
          <View style={{...styles.spotC, ...styles.box}} onLayout={(e) => {drops['spotC'] = e.nativeEvent.layout}} />
@@ -89,6 +88,8 @@ const Interact= () => {
                ...styles.spotA,
                transform: [{ translateX: pan.x }, { translateY: pan.y }],
                backgroundColor:"white",
+               borderStyle:"none",
+               borderWidth:0,
             }}
             {...panResponder.panHandlers}>
             <Image 
@@ -110,41 +111,37 @@ const styles = StyleSheet.create({
       height:"10%",
       width:"20%",
       position:"absolute",
+      borderStyle:"dashed",
+      borderWidth:3,
    },
    spotA: {
-      backgroundColor:"red",
       top:"10%",
       left:"10%",
    },
    spotB: {
-      backgroundColor:"orange",
       top:"10%",
       left:"40%",
    },
    spotC: {
-      backgroundColor:"green",
       top:"10%",
       left:"70%",
    },
    dropA: {
-      backgroundColor:"limegreen",
       top:"80%",
       left:"10%",
    },
    dropB: {
-      backgroundColor:"blue",
       top:"80%",
       left:"40%",
    },
    dropC: {
-      backgroundColor:"purple",
       top:"80%",
       left:"70%",
    },
    titleText: {
       fontSize: 14,
       lineHeight: 24,
-      fontWeight: "bold"
+      fontWeight: "bold",
    }
 });
 
