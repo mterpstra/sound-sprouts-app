@@ -2,6 +2,7 @@ import React, { useRef, useState, useContext } from "react";
 import { Animated, View, StyleSheet, PanResponder, Text, ImageBackground, Image } from "react-native";
 import { useHeaderHeight } from '@react-navigation/elements';
 import { CartContext } from "./CartContext"
+import Draggable from "./Draggable"
 
 // Pulled these from the Layout file for now
 const petshop = require('../../images/background.png')
@@ -10,54 +11,15 @@ const BLUR_RADIUS = Platform.OS == 'ios' ? 20 : 4;
 const Interact= () => {
    const cart = useContext(CartContext);
    const headerHeight = useHeaderHeight();
-   const pan = useRef(new Animated.ValueXY()).current;
    let drops = {};
 
-   const [dropped, setDropped] = useState(true);
+   const [spotA, setSpotA] = useState({});
+   const [spotB, setSpotB] = useState({});
+   const [spotC, setSpotC] = useState({});
 
-   const panResponder = useRef(
-      PanResponder.create({
-         onMoveShouldSetPanResponder: () => true,
-
-         onPanResponderGrant: () => {
-            pan.setOffset({
-               x: pan.x._value,
-               y: pan.y._value
-            });
-         },
-
-         onPanResponderMove: Animated.event(
-            [
-               null,
-               { dx: pan.x, dy: pan.y }
-            ],
-            {
-               useNativeDriver:false,
-            }
-         ),
-
-         onPanResponderRelease: (evt, gestureState) => {
-            pan.flattenOffset();
-
-            setDropped(false);
-            for (const [key, value] of Object.entries(drops)) {
-               if ( (gestureState.moveY > value.y) && (gestureState.moveY < value.y + value.height) &&
-                  (gestureState.moveX > value.x) && (gestureState.moveX < value.x + value.width)) {
-
-                  setDropped(true);
-                  const x = value.x - drops.spotA.x;
-                  const y = value.y - drops.spotA.y;
-
-                  Animated.spring(pan, {
-                     toValue: {x, y},
-                     friction: 5,
-                     useNativeDriver:false,
-                  }).start();
-               }
-            }
-         }
-      })
-   ).current;
+   const [dropA, setDropA] = useState({});
+   const [dropB, setDropB] = useState({});
+   const [dropC, setDropC] = useState({});
 
    return (
       <ImageBackground 
@@ -70,36 +32,45 @@ const Interact= () => {
             justifyContent: "center",
          }}>
 
-         <View style={{...styles.spotA, ...styles.box}} onLayout={(e) => {drops['spotA'] = e.nativeEvent.layout}} />
-         <View style={{...styles.spotB, ...styles.box}} onLayout={(e) => {drops['spotB'] = e.nativeEvent.layout}} />
-         <View style={{...styles.spotC, ...styles.box}} onLayout={(e) => {drops['spotC'] = e.nativeEvent.layout}} />
+         <View 
+            style={{...styles.spotA, ...styles.box}} 
+            onLayout={(e) => {setSpotA(e.nativeEvent.layout)}} />
 
-         <View style={{...styles.dropA, ...styles.box}} onLayout={(e) => {drops['dropA'] = e.nativeEvent.layout}} />
-         <View style={{...styles.dropB, ...styles.box}} onLayout={(e) => {drops['dropB'] = e.nativeEvent.layout}} />
-         <View style={{...styles.dropC, ...styles.box}} onLayout={(e) => {drops['dropC'] = e.nativeEvent.layout}} />
+         <View style={{...styles.spotB, ...styles.box}} 
+            onLayout={(e) => {setSpotB(e.nativeEvent.layout)}} />
 
-         <Text style={styles.titleText}>
-            { (dropped) ? "Dropped" : "Elsewhere" }
-         </Text>
+         <View style={{...styles.spotC, ...styles.box}} 
+            onLayout={(e) => {setSpotC(e.nativeEvent.layout)}} />
 
-         <Animated.View
-            style={{
-               ...styles.box,
-               ...styles.spotA,
-               transform: [{ translateX: pan.x }, { translateY: pan.y }],
-               backgroundColor:"white",
-               borderStyle:"none",
-               borderWidth:0,
-            }}
-            {...panResponder.panHandlers}>
-            <Image 
-               style={{
-                  flex:1,
-                  width: undefined,
-                  height: undefined,
-                  resizeMode:'contain'}}
-               source={cart.item1.image}/>
-         </Animated.View>
+         <View style={{...styles.dropA, ...styles.box}} 
+            onLayout={(e) => {setDropA(e.nativeEvent.layout)}} />
+
+         <View style={{...styles.dropB, ...styles.box}} 
+            onLayout={(e) => {setDropB(e.nativeEvent.layout)}} />
+
+         <View style={{...styles.dropC, ...styles.box}} 
+            onLayout={(e) => {setDropC(e.nativeEvent.layout)}} />
+
+         {Object.keys(spotA).length && Object.keys(dropA).length ? 
+            <Draggable drops={drops} styles={styles.spotA} origin={spotA} dest={dropA}>
+               <Image source={cart.item1.image} style={styles.img} />
+            </Draggable>
+            : null
+         }
+
+         {Object.keys(spotB).length && Object.keys(dropB).length ? 
+            <Draggable drops={drops} styles={styles.spotB} origin={spotB} dest={dropB}>
+               <Image source={cart.item2.image} style={styles.img} />
+            </Draggable>
+            : null
+         }
+
+         {Object.keys(spotC).length && Object.keys(dropC).length ? 
+            <Draggable drops={drops} styles={styles.spotC} origin={spotC} dest={dropC}>
+               <Image source={cart.item3.image} style={styles.img} />
+            </Draggable>
+            : null
+         }
 
       </ImageBackground>
    );
@@ -113,6 +84,12 @@ const styles = StyleSheet.create({
       position:"absolute",
       borderStyle:"dashed",
       borderWidth:3,
+   },
+   img: {
+      flex:1,
+      width: undefined,
+      height: undefined,
+      resizeMode:'contain',
    },
    spotA: {
       top:"10%",
