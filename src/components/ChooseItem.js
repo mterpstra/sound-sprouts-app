@@ -60,6 +60,13 @@ Row.propTypes = {
 
 const ChooseItem = (props) => {
 
+   if (!props.route.name) {
+      return (
+         <>
+         </>
+      );
+   }
+
    const item = props.route.name.toLowerCase();
    console.log("ChooseItem(item): ", item);
 
