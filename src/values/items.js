@@ -46,16 +46,20 @@ export const ITEMS = {
          "type": "toy",
          "items": [
             {
-               "text":"Dog Teeth Toy",
+               "image": require('../../images/dog/item3/ball.png'),
+               "text":"Tennis Ball",
             },
             {
-               "text":"Dog Bone Toy",
+               "image": require('../../images/dog/item3/bone.png'),
+               "text":"Bone Toy",
             },
             {
-               "text":"Dog Squeaky Toy",
+               "image": require('../../images/dog/item3/doll.png'),
+               "text":"Stuffed Plushy",
             },
             {
-               "text":"Dog Rope Toy",
+               "image": require('../../images/dog/item3/rope.png'),
+               "text":"Tug of War Rope",
             },
          ]
       },
@@ -130,12 +134,20 @@ export const ITEMS = {
          "type": "cage",
          "items": [
             {
-               "image": require('../../images/bunny/item1/Cage1.jpeg'),
+               "image": require('../../images/bunny/item1/red.png'),
                "text":"Tall Red Cage",
             },
             {
-               "image": require('../../images/bunny/item1/Cage2.webp'),
-               "text":"Short White Cage",
+               "image": require('../../images/bunny/item1/teal.png'),
+               "text":"Short Teal Cage",
+            },
+            {
+               "image": require('../../images/bunny/item1/pink.png'),
+               "text":"Two Story Pink Cage",
+            },
+            {
+               "image": require('../../images/bunny/item1/blue.png'),
+               "text":"Round Dark Blue Cage",
             },
          ]
       },
@@ -143,16 +155,20 @@ export const ITEMS = {
          "type": "food",
          "items": [
             {
-               "text":"Pellets",
-            },
-            {
+               "image": require('../../images/bunny/item2/watermelon.png'),
                "text":"Watermelon",
             },
             {
+               "image": require('../../images/bunny/item2/lettuce.png'),
+               "text":"Lettuce",
+            },
+            {
+               "image": require('../../images/bunny/item2/strawberries.png'),
                "text":"Strawberries",
             },
             {
-               "text":"Lettuce",
+               "image": require('../../images/bunny/item2/carrots.png'),
+               "text":"Carrots",
             },
          ]
       },
