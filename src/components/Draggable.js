@@ -2,7 +2,6 @@ import React, { useRef, useState, useContext } from "react";
 import { Animated, View, StyleSheet, PanResponder, Text} from "react-native";
 
 const Draggable = (props) => {
-   console.log("Draggable Props:", props);
    const pan = useRef(new Animated.ValueXY()).current;
 
    const panResponder = useRef(
@@ -30,8 +29,7 @@ const Draggable = (props) => {
             pan.flattenOffset();
 
             // @todo: Better way than 2 big if statements
-            if ( 
-               (gestureState.moveY > props.dest.y) && 
+            if ( (gestureState.moveY > props.dest.y) && 
                (gestureState.moveY < props.dest.y + props.dest.height) &&
                (gestureState.moveX > props.dest.x) && 
                (gestureState.moveX < props.dest.x + props.dest.width)) {
@@ -46,23 +44,17 @@ const Draggable = (props) => {
                }).start();
             }
 
-            if ( 
-               (gestureState.moveY > props.origin.y) && 
+            if ( (gestureState.moveY > props.origin.y) && 
                (gestureState.moveY < props.origin.y + props.origin.height) &&
                (gestureState.moveX > props.origin.x) && 
                (gestureState.moveX < props.origin.x + props.origin.width)) {
 
-               const x = props.origin.x - props.origin.x;
-               const y = props.origin.y - props.origin.y;
-
                Animated.spring(pan, {
-                  toValue: {x, y},
+                  toValue: {x:0, y:0},
                   friction: 5,
                   useNativeDriver:false,
                }).start();
             }
-
-
          }
       })
    ).current;
@@ -71,7 +63,8 @@ const Draggable = (props) => {
       <Animated.View
          style={{
             ...styles.box,
-            ...props.styles,
+            top:props.origin.y,
+            left:props.origin.x,
             transform: [{ translateX: pan.x }, { translateY: pan.y }],
             backgroundColor:"white",
             borderStyle:"none",
@@ -92,10 +85,6 @@ const styles = StyleSheet.create({
       position:"absolute",
       borderStyle:"dashed",
       borderWidth:3,
-   },
-   spotA: {
-      top:"10%",
-      left:"10%",
    },
 });
 

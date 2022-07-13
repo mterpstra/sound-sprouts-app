@@ -117,7 +117,7 @@ TopWithDede.propTypes = {
 const Bottom = (props) =>{
    return(
       <View style={styles.bottom}>
-      {props.children}
+         {props.children}
       </View>
    )
 }

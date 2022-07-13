@@ -11,7 +11,6 @@ const BLUR_RADIUS = Platform.OS == 'ios' ? 20 : 4;
 const Interact= () => {
    const cart = useContext(CartContext);
    const headerHeight = useHeaderHeight();
-   let drops = {};
 
    const [spotA, setSpotA] = useState({});
    const [spotB, setSpotB] = useState({});
@@ -31,6 +30,14 @@ const Interact= () => {
             alignItems: "center",
             justifyContent: "center",
          }}>
+
+         <View style={{
+            height:headerHeight,
+            backgroundColor:"rgba(0,0,0,0.5)",
+            width:"100%",
+            top:0,
+            position:"absolute",
+         }}/>
 
          <View 
             style={{...styles.spotA, ...styles.box}} 
@@ -52,21 +59,21 @@ const Interact= () => {
             onLayout={(e) => {setDropC(e.nativeEvent.layout)}} />
 
          {Object.keys(spotA).length && Object.keys(dropA).length ? 
-            <Draggable drops={drops} styles={styles.spotA} origin={spotA} dest={dropA}>
+            <Draggable origin={spotA} dest={dropA}>
                <Image source={cart.item1.image} style={styles.img} />
             </Draggable>
             : null
          }
 
          {Object.keys(spotB).length && Object.keys(dropB).length ? 
-            <Draggable drops={drops} styles={styles.spotB} origin={spotB} dest={dropB}>
+            <Draggable origin={spotB} dest={dropB}>
                <Image source={cart.item2.image} style={styles.img} />
             </Draggable>
             : null
          }
 
          {Object.keys(spotC).length && Object.keys(dropC).length ? 
-            <Draggable drops={drops} styles={styles.spotC} origin={spotC} dest={dropC}>
+            <Draggable origin={spotC} dest={dropC}>
                <Image source={cart.item3.image} style={styles.img} />
             </Draggable>
             : null
@@ -75,6 +82,9 @@ const Interact= () => {
       </ImageBackground>
    );
 }
+
+const SPOT_TOP = "15%";
+const DROP_TOP = "85%";
 
 const styles = StyleSheet.create({
    box: {
@@ -92,34 +102,29 @@ const styles = StyleSheet.create({
       resizeMode:'contain',
    },
    spotA: {
-      top:"10%",
+      top:SPOT_TOP,
       left:"10%",
    },
    spotB: {
-      top:"10%",
+      top:SPOT_TOP,
       left:"40%",
    },
    spotC: {
-      top:"10%",
+      top:SPOT_TOP,
       left:"70%",
    },
    dropA: {
-      top:"80%",
+      top:DROP_TOP,
       left:"10%",
    },
    dropB: {
-      top:"80%",
+      top:DROP_TOP,
       left:"40%",
    },
    dropC: {
-      top:"80%",
+      top:DROP_TOP,
       left:"70%",
    },
-   titleText: {
-      fontSize: 14,
-      lineHeight: 24,
-      fontWeight: "bold",
-   }
 });
 
 export default Interact;
