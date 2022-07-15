@@ -1,5 +1,6 @@
-import React, { useRef, useState, useContext } from "react";
-import { Animated, View, StyleSheet, PanResponder, Text} from "react-native";
+import React, { useRef } from "react";
+import { Animated, StyleSheet, PanResponder } from "react-native";
+import PropTypes from 'prop-types';
 
 const Draggable = (props) => {
    const pan = useRef(new Animated.ValueXY()).current;
@@ -76,6 +77,12 @@ const Draggable = (props) => {
 
    );
 }
+
+Draggable.propTypes = {
+   dest: PropTypes.object,
+   origin: PropTypes.object,
+   children: PropTypes.object,
+};
 
 const styles = StyleSheet.create({
    box: {

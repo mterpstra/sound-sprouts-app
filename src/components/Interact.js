@@ -1,5 +1,5 @@
-import React, { useRef, useState, useContext } from "react";
-import { Animated, View, StyleSheet, PanResponder, Text, ImageBackground, Image } from "react-native";
+import React, { useState, useContext } from "react";
+import { View, StyleSheet, Platform, ImageBackground, Image } from "react-native";
 import { useHeaderHeight } from '@react-navigation/elements';
 import { CartContext } from "./CartContext"
 import Draggable from "./Draggable"
