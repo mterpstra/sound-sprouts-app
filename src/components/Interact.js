@@ -39,6 +39,13 @@ const Interact= () => {
             position:"absolute",
          }}/>
 
+         <Image source={cart.source} 
+            style={{
+               width: "80%",
+               resizeMode:'contain',
+            }}
+         />
+
          <View 
             style={{...styles.spotA, ...styles.box}} 
             onLayout={(e) => {setSpotA(e.nativeEvent.layout)}} />
