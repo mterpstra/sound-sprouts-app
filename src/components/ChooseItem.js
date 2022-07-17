@@ -20,11 +20,10 @@ const next = (current) => {
 
 const Col = (props) => {
    const item = props.route.name.toLowerCase();
-   console.log("col item", props.index, item);
    return (
       <>
          {ITEMS[props.cart.pet][item].items[props.index] &&
-         <View style={{ flex:0.4 }}>
+         <View style={{ flex:0.42 }}>
             <Item 
                source={ITEMS[props.cart.pet][item].items[props.index].image} 
                text={ITEMS[props.cart.pet][item].items[props.index].text} 
@@ -48,7 +47,7 @@ Col.propTypes = {
 
 const Row = (props) => {
    return (
-      <View style={{ flex:0.3, flexDirection:"row", justifyContent:"space-evenly"}}>
+      <View style={{ flex:0.4, flexDirection:"row", justifyContent:"space-evenly"}}>
          <Col {...props} />
          <Col {...props} index={props.index+1} />
       </View>
@@ -68,17 +67,13 @@ const ChooseItem = (props) => {
    }
 
    const item = props.route.name.toLowerCase();
-   console.log("ChooseItem(item): ", item);
-
    const cart = useContext(CartContext);
-   console.log("ChooseItem(cart):", cart);
-
    const message = `Lets choose a ${ITEMS[cart.pet][item].type} for your new friend.`;
 
    return (
       <BluredLayout message={message}>
          <View style={{ flex:1, flexDirection:"column", justifyContent:"space-evenly"}}>
-            <Row index={0} cart={cart} {...props} />
+            <Row index={0} cart={cart} {...props}/>
             <Row index={2} cart={cart} {...props}/>
          </View>
       </BluredLayout>

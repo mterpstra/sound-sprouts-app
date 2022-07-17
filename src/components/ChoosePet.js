@@ -4,6 +4,7 @@ import { Text, View, Image, StyleSheet, Dimensions } from 'react-native';
 import { useFonts } from 'expo-font';
 import { BluredLayout } from "./Layout"
 import MyBox from "./Box"
+import { GetFontSize } from "../values/fontsizes.js"; 
 import { COLORS } from '../values/colors.js';
 import { CartContext } from "./CartContext"
 
@@ -14,13 +15,11 @@ const turtle = require('../../images/turtle/turtle.png');
 const parrot = require('../../images/parrot/parrot.png');
 const hamster = require('../../images/hamster/hamster.png');
 
+const FONT_SIZE=GetFontSize(Dimensions.get('window').width);
 const message = [
    "We have lots of nice pets to choose from!",
    "Pick one and lets get started." 
 ];
-
-const width = Dimensions.get('window').width;
-const FONT_SIZE=(width > 500) ? 60 : 30;
 
 const Pet = (props) => {
 

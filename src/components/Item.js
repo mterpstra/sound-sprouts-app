@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { Text, View, Image, StyleSheet, Dimensions } from 'react-native';
 import { useFonts } from 'expo-font';
 import MyBox from "./Box"
+import { GetFontSize } from "../values/fontsizes.js"; 
 import { COLORS } from '../values/colors.js';
 
-const width = Dimensions.get('window').width;
-const FONT_SIZE=(width > 500) ? 60 : 30;
-
+const FONT_SIZE=GetFontSize(Dimensions.get('window').width);
 
 const Item = (props) => {
 
@@ -22,15 +21,29 @@ const Item = (props) => {
    }
 
    return (
-      <View style={styles.box}>
-         <MyBox onPress={props.onPress}>
+      <View style={{
+         flex:1,
+         flexDirection:"column",
+         alignItems: "stretch",
+      }}>
 
-            <View style={{ flex:1, flexDirection:"row", justifyContent:"center", alignItems:"stretch" }}>
+         <View style={{ 
+            flex:0.7, 
+            flexDirection:"row", 
+            justifyContent:"center", 
+            alignItems:"stretch",
+         }}>
+            <MyBox onPress={props.onPress}>
                <Image source={props.source} style={styles.img} />
-            </View>
+            </MyBox>
+         </View>
 
-         </MyBox>
-         <Text style={styles.text}>{text}</Text>
+         <View style={{ 
+            flex:0.3,
+         }}>
+            <Text style={styles.text}>{text}</Text>
+         </View>
+
       </View>
    );
 }
@@ -42,11 +55,6 @@ Item.propTypes = {
 };
 
 const styles = StyleSheet.create({
-   box: {
-      flex:1,
-      flexDirection:"column",
-      alignItems: "stretch",
-   },
    img: {
       flex:1,
       width: undefined,
@@ -59,7 +67,7 @@ const styles = StyleSheet.create({
       color:COLORS.red,
       textAlign:"center",
       fontFamily: 'Patrick-Hand',
-      flexWrap: 'wrap',
+      flexWrap: 'nowrap',
       textTransform:"capitalize",
    },
 });
