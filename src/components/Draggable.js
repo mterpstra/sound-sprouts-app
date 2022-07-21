@@ -29,6 +29,19 @@ const Draggable = (props) => {
          onPanResponderRelease: (evt, gestureState) => {
             pan.flattenOffset();
 
+            // Make sure the item is not dragged and placed into
+            // the header.  Dropping in the header prevents the
+            // user of moving it again (out of the header).
+            // For now, dragging anywhere above the original spot
+            // gets repositioned to the origina spot.
+            if (parseInt(pan.y._value) < 0) {
+               Animated.spring(pan, {
+                  toValue: {x:0, y:0},
+                  friction: 5,
+                  useNativeDriver:false,
+               }).start();
+            }
+
             // @todo: Better way than 2 big if statements
             if ( (gestureState.moveY > props.dest.y) && 
                (gestureState.moveY < props.dest.y + props.dest.height) &&
