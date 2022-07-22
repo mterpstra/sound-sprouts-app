@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { View, StyleSheet, Platform, ImageBackground, Image } from "react-native";
+import React, { useState, useContext, useEffect } from "react";
+import { Text, View, StyleSheet, Platform, ImageBackground, Image, Animated } from "react-native";
 import { useHeaderHeight } from '@react-navigation/elements';
 import { CartContext } from "./CartContext"
 import Draggable from "./Draggable"
@@ -9,7 +9,7 @@ const petshop = require('../../images/background.png')
 const BLUR_RADIUS = Platform.OS == 'ios' ? 20 : 4;
 
 const Interact= () => {
-   const cart = useContext(CartContext);
+   let cart = useContext(CartContext);
    const headerHeight = useHeaderHeight();
 
    const [spotA, setSpotA] = useState({});
@@ -19,6 +19,31 @@ const Interact= () => {
    const [dropA, setDropA] = useState({});
    const [dropB, setDropB] = useState({});
    const [dropC, setDropC] = useState({});
+
+   const startValue = new Animated.Value(0);
+   let endValue = 0;
+   const duration = 3000;
+
+   if (spotA && spotA.y && dropA && dropA.y) {
+      endValue = dropA.y - spotA.y;
+      console.log("end value:", endValue);
+   }
+
+   useEffect(() => {
+      Animated.timing(startValue, {
+         toValue: endValue,
+         duration: duration,
+         useNativeDriver: true,
+      }).start();
+   }, [startValue, endValue, duration]);
+
+
+
+   if (!cart.item1) {
+      console.log("cart is empty, using test data");
+      cart = JSON.parse(`{"item1": {"image": 18, "text": "Dog Bone Dish"}, "item2": {"image": 20, "text": "Steak"}, "item3": {"image": 23, "text": "Tennis Ball"}, "name": "Spot", "pet": "dog", "source": 9}`);
+   }
+
 
    return (
       <ImageBackground 
@@ -45,6 +70,7 @@ const Interact= () => {
                resizeMode:'contain',
             }}
          />
+
 
          <View 
             style={{...styles.spotA, ...styles.box}} 
@@ -86,6 +112,22 @@ const Interact= () => {
             : null
          }
 
+         <Animated.View
+            style={[
+               styles.square,
+               {
+                  transform: [
+                     {
+                        translateY: startValue,
+                     },
+                  ],
+               },
+            ]}
+         >
+            <Image source={require("../../images/helphand.png")} style={styles.img} />
+
+         </Animated.View>
+
       </ImageBackground>
    );
 }
@@ -94,6 +136,13 @@ const SPOT_TOP = "15%";
 const DROP_TOP = "85%";
 
 const styles = StyleSheet.create({
+   square: {
+      height:"10%",
+      width:"20%",
+      position:"absolute",
+      top:SPOT_TOP,
+      left:"10%",
+   },
    box: {
       borderRadius:15,
       height:"10%",
