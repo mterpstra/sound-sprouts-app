@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Text, View, StyleSheet, Platform, ImageBackground, Image, Animated } from "react-native";
+import { Text, View, StyleSheet, Platform, ImageBackground, Image, Animated, Easing } from "react-native";
 import { useHeaderHeight } from '@react-navigation/elements';
 import { CartContext } from "./CartContext"
 import Draggable from "./Draggable"
@@ -26,15 +26,20 @@ const Interact= () => {
 
    if (spotA && spotA.y && dropA && dropA.y) {
       endValue = dropA.y - spotA.y;
-      console.log("end value:", endValue);
    }
 
    useEffect(() => {
-      Animated.timing(startValue, {
-         toValue: endValue,
-         duration: duration,
-         useNativeDriver: true,
-      }).start();
+      const interval = setInterval(() => {
+         startValue.setValue(0);
+         Animated.timing(startValue, {
+            toValue: endValue,
+            duration: duration,
+            useNativeDriver: true,
+            easing:Easing.inOut(Easing.ease),
+         }).start();
+      }, 5000);
+      return () => clearInterval(interval);
+
    }, [startValue, endValue, duration]);
 
 
