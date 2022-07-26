@@ -56,6 +56,10 @@ const Draggable = (props) => {
                   friction: 5,
                   useNativeDriver:false,
                }).start();
+
+               if (props.onDrop) {
+                  props.onDrop();
+               }
             }
 
             if ( (gestureState.moveY > props.origin.y) && 

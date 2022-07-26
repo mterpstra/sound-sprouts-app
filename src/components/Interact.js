@@ -20,32 +20,48 @@ const Interact= () => {
    const [dropB, setDropB] = useState({});
    const [dropC, setDropC] = useState({});
 
+   const [help, setHelp] = useState(true);
+
    const startValue = new Animated.Value(0);
-   let endValue = 0;
    const duration = 3000;
+   let endValue = 0;
 
    if (spotA && spotA.y && dropA && dropA.y) {
       endValue = dropA.y - spotA.y;
    }
 
    useEffect(() => {
-      const interval = setInterval(() => {
-         startValue.setValue(0);
-         Animated.timing(startValue, {
-            toValue: endValue,
-            duration: duration,
-            useNativeDriver: true,
-            easing:Easing.inOut(Easing.ease),
-         }).start();
-      }, 5000);
-      return () => clearInterval(interval);
+      if (help) {
+         const interval = setInterval(() => {
+            startValue.setValue(0);
+            Animated.timing(startValue, {
+               toValue: endValue,
+               duration: duration,
+               useNativeDriver: true,
+               easing:Easing.inOut(Easing.ease),
+            }).start();
+         }, 5000);
 
-   }, [startValue, endValue, duration]);
+         console.log("useEffect, setting interval", interval);
+
+         return () => {
+            console.log("return", interval);
+            clearInterval(interval);
+         }
+      }
+   });
+
+   const dropped = () => {
+      // Since setHelp() is in state, this will cause a rerender.  
+      // When a rerender occurs, the callback from the original
+      // setInterval will fire and clear the previous interval.
+      console.log("dropped");
+      setHelp(false);
+   }
 
 
-
+   // Strickly used for debugging...
    if (!cart.item1) {
-      console.log("cart is empty, using test data");
       cart = JSON.parse(`{"item1": {"image": 18, "text": "Dog Bone Dish"}, "item2": {"image": 20, "text": "Steak"}, "item3": {"image": 23, "text": "Tennis Ball"}, "name": "Spot", "pet": "dog", "source": 9}`);
    }
 
@@ -97,7 +113,7 @@ const Interact= () => {
             onLayout={(e) => {setDropC(e.nativeEvent.layout)}} />
 
          {Object.keys(spotA).length && Object.keys(dropA).length ? 
-            <Draggable origin={spotA} dest={dropA}>
+            <Draggable origin={spotA} dest={dropA} onDrop={dropped}>
                <Image source={cart.item1.image} style={styles.img} />
             </Draggable>
             : null
@@ -117,21 +133,24 @@ const Interact= () => {
             : null
          }
 
-         <Animated.View
-            style={[
-               styles.square,
-               {
-                  transform: [
-                     {
-                        translateY: startValue,
-                     },
-                  ],
-               },
-            ]}
-         >
-            <Image source={require("../../images/helphand.png")} style={styles.img} />
+         {(help) ?
+            <Animated.View
+               style={[
+                  styles.square,
+                  {
+                     transform: [
+                        {
+                           translateY: startValue,
+                        },
+                     ],
+                  },
+               ]}
+            >
+               <Image source={require("../../images/helphand.png")} style={styles.img} />
 
-         </Animated.View>
+            </Animated.View>
+            :null
+         }
 
       </ImageBackground>
    );
