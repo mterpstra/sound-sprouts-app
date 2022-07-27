@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Animated, StyleSheet, PanResponder } from "react-native";
+import MyBox from "./Box"
 import PropTypes from 'prop-types';
 
 const Draggable = (props) => {
@@ -84,12 +85,13 @@ const Draggable = (props) => {
             top:props.origin.y,
             left:props.origin.x,
             transform: [{ translateX: pan.x }, { translateY: pan.y }],
-            backgroundColor:"white",
             borderStyle:"none",
             borderWidth:0,
          }}
          {...panResponder.panHandlers}>
-         {props.children}
+         <MyBox radius={15}>
+            {props.children}
+         </MyBox>
       </Animated.View>
 
    );
