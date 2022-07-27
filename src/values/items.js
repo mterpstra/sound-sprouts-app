@@ -177,9 +177,19 @@ export const ITEMS = {
          "items": [
             {
                "text":"Tunnel",
+               "image": require('../../images/bunny/item3/tunnel.png'),
             },
             {
-               "text":"Chewy Toy",
+               "text":"Wood Ball",
+               "image": require('../../images/bunny/item3/ball.png'),
+            },
+            {
+               "text":"Chew Sticks",
+               "image": require('../../images/bunny/item3/sticks.png'),
+            },
+            {
+               "text":"Carrot Tree",
+               "image": require('../../images/bunny/item3/tree.png'),
             },
          ]
       },
