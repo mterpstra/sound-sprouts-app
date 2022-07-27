@@ -199,10 +199,20 @@ export const ITEMS = {
          "type": "cage",
          "items": [
             {
-               "text":"Round Bird Cage",
+               "text":"Round Red Cage",
+               "image": require('../../images/parrot/item1/red.png'),
             },
             {
-               "text":"Triange Bird Cage",
+               "text":"Tall Blue Cage",
+               "image": require('../../images/parrot/item1/blue.png'),
+            },
+            {
+               "text":"Little Pink Cage",
+               "image": require('../../images/parrot/item1/pink.png'),
+            },
+            {
+               "text":"Green Dome Cage",
+               "image": require('../../images/parrot/item1/green.png'),
             },
          ]
       },
@@ -211,12 +221,19 @@ export const ITEMS = {
          "items": [
             {
                "text":"Seeds",
+               "image": require('../../images/parrot/item2/seeds.png'),
             },
             {
-               "text":"Nuts",
+               "text":"Fruit",
+               "image": require('../../images/parrot/item2/fruit.png'),
             },
             {
-               "text":"Friuts",
+               "text":"Bread",
+               "image": require('../../images/parrot/item2/bread.png'),
+            },
+            {
+               "text":"Peanuts",
+               "image": require('../../images/parrot/item2/peanuts.png'),
             },
          ]
       },
