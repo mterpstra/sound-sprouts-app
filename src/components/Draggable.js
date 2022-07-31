@@ -85,7 +85,6 @@ const Draggable = (props) => {
             top:props.origin.y,
             left:props.origin.x,
             transform: [{ translateX: pan.x }, { translateY: pan.y }],
-            borderStyle:"none",
             borderWidth:0,
          }}
          {...panResponder.panHandlers}>
@@ -109,7 +108,6 @@ const styles = StyleSheet.create({
       height:"10%",
       width:"20%",
       position:"absolute",
-      borderStyle:"dashed",
       borderWidth:3,
    },
 });

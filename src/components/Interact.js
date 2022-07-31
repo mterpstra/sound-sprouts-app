@@ -4,13 +4,14 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import { CartContext } from "./CartContext"
 import Draggable from "./Draggable"
 
+import { ITEMS } from '../values/items.js';
+
 // Pulled these from the Layout file for now
 const petshop = require('../../images/background.png')
 const BLUR_RADIUS = Platform.OS == 'ios' ? 20 : 4;
 
 const Interact= () => {
    let cart = useContext(CartContext);
-   const headerHeight = useHeaderHeight();
 
    const [spotA, setSpotA] = useState({});
    const [spotB, setSpotB] = useState({});
@@ -61,8 +62,17 @@ const Interact= () => {
 
 
    // Strickly used for debugging...
+   console.log(cart);
    if (!cart.item1) {
-      cart = JSON.parse(`{"item1": {"image": 18, "text": "Dog Bone Dish"}, "item2": {"image": 20, "text": "Steak"}, "item3": {"image": 23, "text": "Tennis Ball"}, "name": "Spot", "pet": "dog", "source": 9}`);
+
+      // Bunny
+      cart = JSON.parse('{"item1": {"image": 41, "text": "Two Story Pink Cage"}, "item2": {"image": 46, "text": "Carrots"}, "item3": {"image": 48, "text": "Wood Ball"}, "name": "", "pet": "bunny", "source": 11}');
+
+      // Hamster
+      //cart = JSON.parse('{"item1": {"text": "Light Red Hamster Cabge"}, "item2": {"text": "Hamster Seeds"}, "item3": {"text": "Sticks"}, "name": "", "pet": "hamster", "source": 14}');
+
+      // Dog
+      //cart = JSON.parse(`{"item1": {"image": 18, "text": "Dog Bone Dish"}, "item2": {"image": 20, "text": "Steak"}, "item3": {"image": 23, "text": "Tennis Ball"}, "name": "Spot", "pet": "dog", "source": 9}`);
    }
 
 
@@ -77,61 +87,50 @@ const Interact= () => {
             justifyContent: "center",
          }}>
 
-         <View style={{
-            height:headerHeight,
-            backgroundColor:"rgba(0,0,0,0.5)",
-            width:"100%",
-            top:0,
-            position:"absolute",
-         }}/>
+         <View style={{ flex:.6, width:"60%" }}>
+            <Image source={cart.source} style={{ flex:1, width: undefined, height: undefined, resizeMode:'contain' }} />
+         </View>
 
-         <Image source={cart.source} 
-            style={{
-               width: "80%",
-               resizeMode:'contain',
-            }}
-         />
-
-
-         <View 
-            style={{...styles.spotA, ...styles.box}} 
+         <View
+            style={{...styles.spotA, ...styles.box}}
             onLayout={(e) => {setSpotA(e.nativeEvent.layout)}} />
 
-         <View style={{...styles.spotB, ...styles.box}} 
+         <View style={{...styles.spotB, ...styles.box}}
             onLayout={(e) => {setSpotB(e.nativeEvent.layout)}} />
 
-         <View style={{...styles.spotC, ...styles.box}} 
+         <View style={{...styles.spotC, ...styles.box}}
             onLayout={(e) => {setSpotC(e.nativeEvent.layout)}} />
 
-         <View style={{...styles.dropA, ...styles.box}} 
+         <View style={{...styles.dropA, ...styles.box}}
             onLayout={(e) => {setDropA(e.nativeEvent.layout)}} />
 
-         <View style={{...styles.dropB, ...styles.box}} 
+         <View style={{...styles.dropB, ...styles.box}}
             onLayout={(e) => {setDropB(e.nativeEvent.layout)}} />
 
-         <View style={{...styles.dropC, ...styles.box}} 
+         <View style={{...styles.dropC, ...styles.box}}
             onLayout={(e) => {setDropC(e.nativeEvent.layout)}} />
 
-         {Object.keys(spotA).length && Object.keys(dropA).length ? 
+         {Object.keys(spotA).length && Object.keys(dropA).length ?
             <Draggable origin={spotA} dest={dropA} onDrop={dropped}>
                <Image source={cart.item1.image} style={styles.img} />
             </Draggable>
             : null
          }
 
-         {Object.keys(spotB).length && Object.keys(dropB).length ? 
+         {Object.keys(spotB).length && Object.keys(dropB).length ?
             <Draggable origin={spotB} dest={dropB}>
                <Image source={cart.item2.image} style={styles.img} />
             </Draggable>
             : null
          }
 
-         {Object.keys(spotC).length && Object.keys(dropC).length ? 
+         {Object.keys(spotC).length && Object.keys(dropC).length ?
             <Draggable origin={spotC} dest={dropC}>
                <Image source={cart.item3.image} style={styles.img} />
             </Draggable>
             : null
          }
+
 
          {(help) ?
             <Animated.View
@@ -168,12 +167,11 @@ const styles = StyleSheet.create({
       left:"10%",
    },
    box: {
-      borderRadius:15,
       height:"10%",
       width:"20%",
       position:"absolute",
-      borderStyle:"dashed",
       borderWidth:3,
+      borderRadius:15,
    },
    img: {
       flex:1,
