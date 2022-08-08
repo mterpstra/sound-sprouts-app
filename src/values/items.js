@@ -242,15 +242,19 @@ export const ITEMS = {
          "items": [
             {
                "text":"Swing",
+               "image": require('../../images/parrot/item3/swing.png'),
             },
             {
                "text":"Ladder",
+               "image": require('../../images/parrot/item3/ladder.png'),
             },
             {
                "text":"Rope",
+               "image": require('../../images/parrot/item3/rope.png'),
             },
             {
                "text":"Chewy Toy",
+               "image": require('../../images/parrot/item3/chewtoy.png'),
             },
          ]
       },
@@ -260,10 +264,20 @@ export const ITEMS = {
          "type": "cage",
          "items": [
             {
-               "text":"Dark Red Hamster Cage",
+               "text":"Tall Red Cage",
+               "image": require('../../images/hamster/item1/red.png'),
             },
             {
-               "text":"Light Red Hamster Cabge",
+               "text":"Short Teal Cage",
+               "image": require('../../images/hamster/item1/teal.png'),
+            },
+            {
+               "text":"Two Story Pink Cage",
+               "image": require('../../images/hamster/item1/pink.png'),
+            },
+            {
+               "text":"Round Blue Cage",
+               "image": require('../../images/hamster/item1/blue.png'),
             },
          ]
       },
@@ -271,16 +285,20 @@ export const ITEMS = {
          "type": "food",
          "items": [
             {
-               "text":"Hamster Pellets",
+               "text":"Seed Mix",
+               "image": require('../../images/hamster/item2/seeds.png'),
             },
             {
-               "text":"Hamster Seeds",
+               "text":"Pellets",
+               "image": require('../../images/hamster/item2/pellets.png'),
             },
             {
-               "text":"Hamster Friuts/Vegetables",
+               "text":"Carrots",
+               "image": require('../../images/hamster/item2/carrots.png'),
             },
             {
-               "text":"Carrots and Berries",
+               "text":"Nuts",
+               "image": require('../../images/hamster/item2/nuts.png'),
             },
          ]
       },
@@ -288,16 +306,20 @@ export const ITEMS = {
          "type": "toy",
          "items": [
             {
+               "text":"Wood Wheel",
+               "image": require('../../images/hamster/item3/wheel.png'),
+            },
+            {
+               "text":"Chewy Stick",
+               "image": require('../../images/hamster/item3/sticks.png'),
+            },
+            {
                "text":"Tunnel",
+               "image": require('../../images/hamster/item3/tunnel.png'),
             },
             {
-               "text":"Sticks",
-            },
-            {
-               "text":"Wheel",
-            },
-            {
-               "text":"Carrots and Berries",
+               "text":"SeeSaw",
+               "image": require('../../images/hamster/item3/seesaw.png'),
             },
          ]
       },
