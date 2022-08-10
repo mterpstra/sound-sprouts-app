@@ -329,10 +329,20 @@ export const ITEMS = {
          "type": "tank",
          "items": [
             {
-               "text":"Red/Teal Tank",
+               "text":"Red Tank",
+               "image": require('../../images/turtle/item1/red.png'),
             },
             {
-               "text":"Tall/Short Plants",
+               "text":"Tall Blue Tank",
+               "image": require('../../images/turtle/item1/blue.png'),
+            },
+            {
+               "text":"Round Orange Tank",
+               "image": require('../../images/turtle/item1/orange.png'),
+            },
+            {
+               "text":"Teal Tank",
+               "image": require('../../images/turtle/item1/teal.png'),
             },
          ]
       },
@@ -340,16 +350,20 @@ export const ITEMS = {
          "type": "food",
          "items": [
             {
-               "text":"Crickets",
+               "text":"Sardines",
+               "image": require('../../images/turtle/item2/sardines.png'),
             },
             {
-               "text":"Tomatoes",
+               "text":"Trout Chow",
+               "image": require('../../images/turtle/item2/troutchow.png'),
             },
             {
-               "text":"Cantaloupe",
+               "text":"Lettuce",
+               "image": require('../../images/turtle/item2/lettuce.png'),
             },
             {
-               "text":"Caterpillars",
+               "text":"Strawberries",
+               "image": require('../../images/turtle/item2/strawberries.png'),
             },
          ]
       },
@@ -358,9 +372,19 @@ export const ITEMS = {
          "items": [
             {
                "text":"Tree Log",
+               "image": require('../../images/turtle/item3/treelog.png'),
             },
             {
-               "text":"Ramp",
+               "text":"Little Bridge",
+               "image": require('../../images/turtle/item3/bridge.png'),
+            },
+            {
+               "text":"Rocky Cave",
+               "image": require('../../images/turtle/item3/cave.png'),
+            },
+            {
+               "text":"Floating Pier",
+               "image": require('../../images/turtle/item3/pier.png'),
             },
          ]
       },
