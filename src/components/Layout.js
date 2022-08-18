@@ -5,7 +5,7 @@ import SpeechBubble from "./SpeechBubble"
 import { useHeaderHeight } from '@react-navigation/elements';
 
 const petshop = require('../../images/background.png')
-const head = require('../../images/head.png')
+const head = require('../../images/head.gif')
 
 const Layout = (props) => {
    const headerHeight = useHeaderHeight();
