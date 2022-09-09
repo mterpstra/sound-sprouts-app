@@ -7,7 +7,7 @@ import Draggable from "./Draggable"
 import { ITEMS } from '../values/items.js';
 
 // Pulled these from the Layout file for now
-const petshop = require('../../images/background.png')
+const petshop = require('../../images/backgroundHome.png')
 const BLUR_RADIUS = Platform.OS == 'ios' ? 20 : 4;
 
 const Interact= () => {
@@ -80,15 +80,17 @@ const Interact= () => {
       <ImageBackground 
          source={petshop} 
          resizeMode="cover" 
-         blurRadius={BLUR_RADIUS}
          style={{
             flex:1,
             alignItems: "center",
             justifyContent: "center",
          }}>
 
-         <View style={{ flex:.6, width:"60%" }}>
-            <Image source={cart.source} style={{ flex:1, width: undefined, height: undefined, resizeMode:'contain' }} />
+         <View style={{ flex:.6, width:"60%", flexDirection:"column-reverse" }}>
+            <Image source={cart.source} 
+               style={{ 
+                  flex:0.5, width: undefined, height: undefined, resizeMode:'contain'
+               }} />
          </View>
 
          <View
