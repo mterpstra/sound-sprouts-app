@@ -18,14 +18,19 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.test.test"
+      "bundleIdentifier": "com.soundsprouts.soundsproutsapp"
     },
     "android": {
-      "package": "com.sound_sprouts.sound_sprouts_app",
+      "package": "com.soundsprouts.soundsproutsapp",
       "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "99535c5a-560f-4a39-ae04-69a959df224d"
+      }
     }
   }
 }
