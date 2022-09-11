@@ -1,5 +1,6 @@
 export const ITEMS = {
    "dog": {
+      "idle": require('../../images/dog/idle.gif'),
       "item1" : {
          "type": "dish",
          "items": [
@@ -65,6 +66,7 @@ export const ITEMS = {
       },
    },
    "cat": {
+      "idle": require('../../images/cat/cat.png'),
       "item1" : {
          "type": "dish",
          "items": [
@@ -130,6 +132,7 @@ export const ITEMS = {
       },
    },
    "bunny": {
+      "idle": require('../../images/bunny/bunny.png'),
       "item1": {
          "type": "cage",
          "items": [
@@ -195,6 +198,7 @@ export const ITEMS = {
       },
    },
    "parrot": {
+      "idle": require('../../images/parrot/parrot.png'),
       "item1" : {
          "type": "cage",
          "items": [
@@ -260,6 +264,7 @@ export const ITEMS = {
       },
    },
    "hamster": {
+      "idle": require('../../images/hamster/hamster.png'),
       "item1" : {
          "type": "cage",
          "items": [
@@ -325,6 +330,7 @@ export const ITEMS = {
       },
    },
    "turtle": {
+      "idle": require('../../images/turtle/turtle.png'),
       "item1": {
          "type": "tank",
          "items": [
