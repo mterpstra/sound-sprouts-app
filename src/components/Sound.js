@@ -11,6 +11,11 @@ const Sound = (props) => {
       setSound(sound);
       console.log('Playing Sound');
       await sound.playAsync(); 
+
+      // This will listen on the navigation changes and stop the sound.
+      props.navigation.addListener('blur', (e) => {
+         sound.unloadAsync(); 
+      });
    }
 
    React.useEffect(() => {

@@ -10,11 +10,13 @@ import { CartContext } from "./CartContext";
 const Inner = (props) => {
    const [name, onChangeName] = useState("");
    const cart = useContext(CartContext);
+   cart.name = name; 
+
    return (
       <KeyboardAvoidingView 
          style={{flex:1}} 
          behavior="height"
-         keyboardVerticalOffset={160}
+         keyboardVerticalOffset={200}
       >
          <View style={{ flex:1, position:"relative" }}>
             <View style={{ position:"absolute", height:"100%", width:"100%", zIndex:2 }}>
@@ -24,21 +26,11 @@ const Inner = (props) => {
                <MyBox/>
             </View>
          </View>
-         <View style={{ flex:0.4, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
+         <View style={{ flex:0.4, flexDirection:"column", justifyContent:"start", alignItems:"center" }}>
             <TextInput style={styles.input} 
                placeholder="Name"
                placeholderTextColor="#bab480"
                onChangeText={onChangeName} />
-            <View style={{ height: 60, width:"80%" }}>
-               <MyBox radius={15} onPress={() => { 
-                  cart.name = name; 
-                  props.navigation.navigate("Item1");
-               }} >
-                  <View style={{ flex:1, flexDirection:"column", justifyContent:"center", alignItems:"center" }}>
-                     <Text style={{ color:"white",fontWeight:"bold" }}>Next</Text>
-                  </View>
-               </MyBox>
-            </View>
          </View>
       </KeyboardAvoidingView>
    );

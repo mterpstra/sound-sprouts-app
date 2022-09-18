@@ -2,6 +2,7 @@ import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import NavigationButton from "./src/components/NavigationButton"
 import Home from "./src/components/Home"
 import HelloFromDede from "./src/components/HelloFromDede"
 import ChoosePet from "./src/components/ChoosePet"
@@ -9,13 +10,11 @@ import ChooseItem from "./src/components/ChooseItem"
 import Interact from "./src/components/Interact"
 import NamePet from "./src/components/NamePet"
 import { CartContext } from "./src/components/CartContext"
+import { COLORS } from './src/values/colors.js';
 
-import { COLORS } from "./src/values/colors"
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-
-
    return ( 
       <CartContext.Provider value={{}}>
          <NavigationContainer>
@@ -28,14 +27,23 @@ const App = () => {
 
                {/* Custom Options to SHOW the header bar on all screens */}
                <Stack.Group 
-                  screenOptions={{
+                  screenOptions={({ navigation, route }) => ({
                      headerTransparent: true,
-                     headerTintColor: COLORS.blue_dark,
-                  }}>
+                        headerTintColor: COLORS.blue_dark,
+                        headerLeft: () => <NavigationButton 
+                           direction="left" 
+                           onPress={navigation.goBack} />
+                  })}
+               >
 
                   <Stack.Screen name="HelloFromDede" 
                      component={HelloFromDede} 
-                     options={{ title:""}}
+                     options={({ navigation }) => ({
+                        title: "",
+                           headerRight: () => (
+                              <NavigationButton onPress={() => navigation.navigate("ChoosePet")} />
+                           ),
+                     })}
                   />
 
                   <Stack.Screen name="ChoosePet" 
@@ -45,7 +53,12 @@ const App = () => {
 
                   <Stack.Screen name="NamePet" 
                      component={NamePet} 
-                     options={{ title:"" }} 
+                     options={({ navigation }) => ({
+                        title: "",
+                           headerRight: () => (
+                              <NavigationButton onPress={() => navigation.navigate("Item1")} />
+                           ),
+                     })}
                   />
 
                   <Stack.Screen name="Item1" 

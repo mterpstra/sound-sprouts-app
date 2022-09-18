@@ -11,21 +11,6 @@ const audio = require('../../assets/audio/HelloFromDede.mp3');
 
 function HelloFromDede(props) {
 
-   // speechComplete
-   function speechComplete() {
-      props.navigation.setOptions({
-         headerRight: () => ( 
-            <Button 
-               title="Next" 
-               color={COLORS.blue_dark}
-               onPress={() => { 
-                  props.navigation.navigate('ChoosePet');
-               }}
-            />
-         )
-      });
-   }
-
    const message = [
       "Hi there, I’m Dede and welcome to my pet shop.",
       "Let me help you find your new friend."
@@ -34,9 +19,9 @@ function HelloFromDede(props) {
    return (
       <Layout>
          <>
-            <Sound audio={audio} /> 
+            <Sound {...props} audio={audio} /> 
             <Top>
-               <SpeechBubble message={message} onComplete={speechComplete} />
+               <SpeechBubble message={message} />
             </Top>
             <Bottom>
                <ImageBackground source={dede} 

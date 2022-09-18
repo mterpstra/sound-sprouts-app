@@ -24,6 +24,8 @@ const Interact= () => {
       );
    }
 
+   console.log(JSON.stringify(cart, null, 4));
+
    return (
       <ImageBackground 
          source={petshop} 
