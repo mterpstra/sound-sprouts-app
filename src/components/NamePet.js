@@ -26,7 +26,7 @@ const Inner = (props) => {
                <MyBox/>
             </View>
          </View>
-         <View style={{ flex:0.4, flexDirection:"column", justifyContent:"start", alignItems:"center" }}>
+         <View style={{ flex:0.4, flexDirection:"column", alignItems:"center" }}>
             <TextInput style={styles.input} 
                placeholder="Name"
                placeholderTextColor="#bab480"
