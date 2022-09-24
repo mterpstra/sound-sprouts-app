@@ -37,16 +37,23 @@ const Interact= () => {
 
 
             {/* Window  */}
-            <View style={{ flex:0.4 }}>
+            <View style={{ 
+               flex:0.3,
+            }}>
             </View>
 
             {/* Wall and Rug */}
             <View
-               style={{ flex:0.5, alignItems:"center" }}>
+               style={{ 
+                  flex:0.55,
+                  alignItems:"center",
+               }}>
                <Image 
                   source={ITEMS[cart.pet].idle}
                   resizeMode='contain'
-                  style={{ flex:1 }}
+                  style={{ 
+                     flex:1,
+                  }}
                />
             </View>
 

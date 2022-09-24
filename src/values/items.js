@@ -66,7 +66,7 @@ export const ITEMS = {
       },
    },
    "cat": {
-      "idle": require('../../images/cat/cat.png'),
+      "idle": require('../../images/cat/idle.gif'),
       "item1" : {
          "type": "dish",
          "items": [
