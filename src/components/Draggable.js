@@ -15,6 +15,10 @@ const Draggable = (props) => {
                x: pan.x._value,
                y: pan.y._value
             });
+
+            if (props.onMove) {
+               props.onMove();
+            }
          },
 
          onPanResponderMove: Animated.event(
@@ -34,13 +38,17 @@ const Draggable = (props) => {
             // the header.  Dropping in the header prevents the
             // user of moving it again (out of the header).
             // For now, dragging anywhere above the original spot
-            // gets repositioned to the origina spot.
+            // gets repositioned to the original spot.
             if (parseInt(pan.y._value) < 0) {
                Animated.spring(pan, {
                   toValue: {x:0, y:0},
                   friction: 5,
                   useNativeDriver:false,
                }).start();
+
+               if (props.onDropOrigin) {
+                  props.onDropOrigin();
+               }
             }
 
             // @todo: Better way than 2 big if statements
@@ -61,6 +69,10 @@ const Draggable = (props) => {
                if (props.onDrop) {
                   props.onDrop();
                }
+
+               if (props.onDropDestination) {
+                  props.onDropDestination();
+               }
             }
 
             if ( (gestureState.moveY > props.origin.y) && 
@@ -73,6 +85,10 @@ const Draggable = (props) => {
                   friction: 5,
                   useNativeDriver:false,
                }).start();
+
+               if (props.onDropOrigin) {
+                  props.onDropOrigin();
+               }
             }
          }
       })
