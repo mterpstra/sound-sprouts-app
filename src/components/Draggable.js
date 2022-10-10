@@ -116,6 +116,10 @@ Draggable.propTypes = {
    dest: PropTypes.object,
    origin: PropTypes.object,
    children: PropTypes.object,
+   onMove: PropTypes.func,
+   onDrop: PropTypes.func,
+   onDropOrigin: PropTypes.func,
+   onDropDestination: PropTypes.func,
 };
 
 const styles = StyleSheet.create({

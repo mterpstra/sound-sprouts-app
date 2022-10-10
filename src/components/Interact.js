@@ -1,13 +1,11 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { View, ImageBackground, Image, Dimensions, StyleSheet, Animated, Easing } from "react-native";
+import { View, ImageBackground, Image, StyleSheet, Animated, Easing } from "react-native";
 import { CartContext } from "./CartContext"
 import Draggable from "./Draggable"
 import { ITEMS } from '../values/items.js';
 
 // Pulled these from the Layout file for now
 const petshop = require('../../images/backgroundHome.png')
-const dimensions = Dimensions.get('window');
-const ratio = dimensions.height / dimensions.width;
 
 const Interact= () => {
    let cart = useContext(CartContext);

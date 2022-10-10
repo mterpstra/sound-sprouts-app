@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { Button, StyleSheet, ImageBackground } from 'react-native';
+import { StyleSheet, ImageBackground } from 'react-native';
 import { Layout, Top, Bottom } from "./Layout"
 import SpeechBubble from "./SpeechBubble"
-import { COLORS } from "../values/colors"
 import Sound from "./Sound"
 
 const dede = require('../../images/Dede.gif');

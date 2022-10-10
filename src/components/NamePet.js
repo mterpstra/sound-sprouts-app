@@ -1,5 +1,5 @@
 import React, { useContext, useState }  from "react"; 
-import { Text, View, Image, TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { View, Image, TextInput, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import { BluredLayout } from "./Layout";
 import { COLORS } from "../values/colors.js";
 import PropTypes from 'prop-types';
@@ -7,7 +7,7 @@ import MyBox from "./Box";
 import { CartContext } from "./CartContext";
 
 
-const Inner = (props) => {
+const Inner = () => {
    const [name, onChangeName] = useState("");
    const cart = useContext(CartContext);
    cart.name = name; 

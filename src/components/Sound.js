@@ -13,7 +13,7 @@ const Sound = (props) => {
       await sound.playAsync(); 
 
       // This will listen on the navigation changes and stop the sound.
-      props.navigation.addListener('blur', (e) => {
+      props.navigation.addListener('blur', () => {
          sound.unloadAsync(); 
       });
    }
@@ -41,6 +41,7 @@ const Sound = (props) => {
 
 Sound.propTypes = {
    audio: PropTypes.number,
+   navigation: PropTypes.object,
 };
 
 export default Sound;

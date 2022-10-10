@@ -37,6 +37,8 @@ MyBox.propTypes = {
    children: PropTypes.object,
    radius: PropTypes.number,
    onPress: PropTypes.func,
+   outerPadding: PropTypes.number,
+   innerPadding: PropTypes.number,
 };
 
 export default MyBox;

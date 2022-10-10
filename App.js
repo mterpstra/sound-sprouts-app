@@ -27,7 +27,7 @@ const App = () => {
 
                {/* Custom Options to SHOW the header bar on all screens */}
                <Stack.Group 
-                  screenOptions={({ navigation, route }) => ({
+                  screenOptions={({ navigation }) => ({
                      headerTransparent: true,
                         headerTintColor: COLORS.blue_dark,
                         headerLeft: () => <NavigationButton 
