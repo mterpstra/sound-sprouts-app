@@ -3,12 +3,14 @@ import { View, ImageBackground, Image, StyleSheet, Animated, Easing } from "reac
 import { CartContext } from "./CartContext"
 import Draggable from "./Draggable"
 import { ITEMS } from '../values/items.js';
+import { useHeaderHeight } from '@react-navigation/elements';
 
 // Pulled these from the Layout file for now
 const petshop = require('../../images/backgroundHome.png')
 
 const Interact= () => {
    let cart = useContext(CartContext);
+   const headerHeight = useHeaderHeight();
 
    const [spotA, setSpotA] = useState({});
    const [spotB, setSpotB] = useState({});
@@ -91,6 +93,12 @@ const Interact= () => {
             flex:1,
             flexDirection:"column",
          }}>
+
+         <View style={{
+            height:headerHeight,
+            postion:"absolute",
+            backgroundColor:"rgba(0,0,0,0.5)",
+         }}/>
 
          {/* Window  */}
          <View style={{ 
@@ -224,7 +232,7 @@ const Interact= () => {
    );
 }
 
-const SPOT_TOP = "5%";
+const SPOT_TOP = "15%";
 const DROP_TOP = "85%";
 
 const styles = StyleSheet.create({
