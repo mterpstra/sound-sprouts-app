@@ -132,7 +132,7 @@ export const ITEMS = {
       },
    },
    "bunny": {
-      "idle": require('../../images/bunny/bunny.png'),
+      "idle": require('../../images/bunny/idle.gif'),
       "item1": {
          "type": "cage",
          "items": [
