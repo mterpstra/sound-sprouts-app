@@ -330,7 +330,7 @@ export const ITEMS = {
       },
    },
    "turtle": {
-      "idle": require('../../images/turtle/turtle.png'),
+      "idle": require('../../images/turtle/idle.gif'),
       "item1": {
          "type": "tank",
          "items": [
