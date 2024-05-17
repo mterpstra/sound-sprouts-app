@@ -264,7 +264,7 @@ export const ITEMS = {
       },
    },
    "hamster": {
-      "idle": require('../../images/hamster/hamster.png'),
+      "idle": require('../../images/hamster/idle.gif'),
       "item1" : {
          "type": "cage",
          "items": [
