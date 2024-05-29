@@ -198,7 +198,7 @@ export const ITEMS = {
       },
    },
    "parrot": {
-      "idle": require('../../images/parrot/parrot.png'),
+      "idle": require('../../images/parrot/parrot.gif'),
       "item1" : {
          "type": "cage",
          "items": [
